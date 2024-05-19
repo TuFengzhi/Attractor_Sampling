@@ -160,7 +160,31 @@ NetPars.tLen    = NetPars.nTrials * NetPars.tTrial;
 NetPars.tStat   = 50 * NetPars.tau; % The starting time to make statistics
 %%
 % Parse network parameters
-parseNetPars;
+%% Check the size of Input variables
+if (size(NetPars.AmplRatio, 1) ~= NetPars.numNets)
+    error('The dim. of NetPars.Ampl does not match with num. of nets.')
+end
+
+if (size(NetPars.Posi, 1) ~= NetPars.numNets)
+    error('The dim. of NetPars.Posi does not match with num. of nets.')
+end
+
+% if strcmp(NetPars.typeExtNois, 'Gaussian')
+%     if (size(NetPars.stdExtNois, 1) ~= NetPars.numNets)
+%         error('The dim. of stdExtNois does not match with num. of nets.')
+%     end
+% end
+
+if length(NetPars.PrefStim) ~= NetPars.N   
+    PrefStim         = linspace(-NetPars.Width,NetPars.Width, NetPars.N+1)';
+    PrefStim(1)      = [];
+    NetPars.PrefStim = PrefStim;
+    clear PrefStim
+end
+
+if (size(NetPars.stdIntNois, 1) ~= NetPars.numNets)
+    error('The dim. of stdIntNois does not match with num. of nets.')
+end
 
 
 NetPars.AmplRatio = 1*ones(NetPars.numNets,1);
