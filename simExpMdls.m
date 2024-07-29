@@ -3,12 +3,16 @@
 
 % Wen-Hao Zhang, April 13, 2020
 
+close all;
+clc;
+clear;
 
 setWorkPath;
 addpath(fullfile(Path_RootDir, 'simExp'));
 
 %%
-flagTask = 5;
+flagTask = 3;
+
 % 1. Demo of the Langevin sampling (OU process) of 1d stimulus feature
 % 2. Demo of the Langevin sampling of 2d stimulus features
 % 3. Demo of the Langevin sampling in a single CANN
