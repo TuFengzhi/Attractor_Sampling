@@ -1,0 +1,530 @@
+{
+    "title": "Systems/Circuits Decentralized Multisensory Information Integration in Neural Systems",
+    "authors": "Wen-Hao Zhang; Aihua Chen; X Malte; J Rasch; Si Wu; S W Designed; Terrence Sejnowski; J Anthony Movshon; Han Hou; Bjo ¨rn Rasch; Robert Legenstein; Kechen Zhang; K Y Michael Wong;  Correspondenceshouldbeaddressedtoeithersiwuormalterasch; D Alais; D Burr; J C Alvarado; B A Rowland; T R Stanford; B E Stein; M Avillac; S Dene `ve; E Olivier; A Pouget; J R Duhamel; J S Baizer; L G Ungerleider; R Desimone; J M Beck; P E Latham; A Pouget; R Ben-Yishai; R L Bar-Or; H Sompolinsky; R J Bertin; A Berthoz; D Boussaoud; L G Ungerleider; R Desimone; J P Bresciani; F Dammeier; Ernst Mo; K H Britten; M N Shadlen; W T Newsome; J A Movshon; M Carandini; D J Heeger; J A Movshon; A Chen; G C Deangelis; D E Angelaki; A Chen; G C Deangelis; D E Angelaki; A Chen; G C Deangelis; D E Angelaki; J J Clark; A L Yuille; A Compte; N Brunel; P S Goldman-Rakic; X J Wang; P Dayan; L F Abbott; S Dene `ve; A Pouget; S Dene `ve; P E Latham; A Pouget; S Dene `ve; P E Latham; A Pouget; H Durrant-Whyte; T C Henderson; B Siciliano; O Khatib; M O Ernst; G Knoblich; M Grosjean; I Thornton; M Shiffrar; M O Ernst; M S Banks; C R Fetsch; A H Turner; G C Deangelis; D E Angelaki; C R Fetsch; G C Deangelis; D E Angelaki; C C Fung; K Y Wong; S Wu; S F Gabel; H Misslisch; S J Schaafsma; J Duysens; Y Gu; D E Angelaki; G C Deangelis; Y Gu; G C Deangelis; D E Angelaki; Y Gu; Z Cheng; L Yang; G C Deangelis; D E Angelaki; J M Hillis; M O Ernst; M S Banks; M S Landy; R A Jacobs; Z P Kilpatrick; K P Ko ¨rding; D M Wolpert; K P Ko ¨rding; U Beierholm; W J Ma; S Quartz; J B Tenenbaum; L Shams; J W Lewis; D C Van Essen; W J Ma; J M Beck; P E Latham; A Pouget; E Magosso; C Cuppini; A Serino; Di Pellegrino; G Ursino; M ; R Moreno-Bote; J Beck; I Kanitscheider; X Pitkow; P Latham; A Pouget; M L Morgan; G C Deangelis; D E Angelaki; T Ohshiro; D E Angelaki; G C Deangelis; A Ponce-Alvarez; A Thiele; T D Albright; G R Stoner; G Deco; A Pouget; S Dene `ve; J R Duhamel; A Pouget; P Dayan; R S Zemel; N W Roach; J Heron; P V Mcgraw; D E Rumelhart; J L Mcclelland; Research Pdp;  Group; P N Sabes; A Samsonovich; B L Mcnaughton; Y Sato; T Toyoizumi; K Aihara; D Senkowski; T R Schneider; J J Foxe; A K Engel; L Shams; W J Ma; U Beierholm; B E Stein; T R Stanford; G Tononi; G M Edelman; M Ursino; C Cuppini; E Magosso; A Serino; G Di Pellegrino; R J Van Beers; A C Sittig; J J Gon; J L Vincent; G H Patel; M D Fox; A Z Snyder; J T Baker; D C Van Essen; J M Zempel; L H Snyder; M Corbetta; M E Raichle; K Wimmer; D Q Nykamp; C Constantinidis; A Compte; D R Wozny; U R Beierholm; L Shams; S Wu; S Amari; H Nakahara; S Wu; K Hamaguchi; S Amari; K Zhang; W Zhang; S Wu",
+    "pub_date": "",
+    "abstract": "How multiple sensory cues are integrated in neural circuitry remains a challenge. The common hypothesis is that information integration might be accomplished in a dedicated multisensory integration area receiving feedforward inputs from the modalities. However, recent experimental evidencesuggeststhatitisnotasinglemultisensorybrainarea,butrathermanymultisensorybrainareasthataresimultaneouslyinvolvedinthe integration of information. Why many mutually connected areas should be needed for information integration is puzzling. Here, we investigated theoretically how information integration could be achieved in a distributed fashion within a network of interconnected multisensory areas. Using biologically realistic neural network models, we developed a decentralized information integration system that comprises multiple interconnected integration areas. Studying an example of combining visual and vestibular cues to infer heading direction, we show that such a decentralized system is in good agreement with anatomical evidence and experimental observations. In particular, we show that this decentralized system can integrate information optimally. The decentralized system predicts that optimally integrated information should emerge locally from the dynamics of the communication between brain areas and sheds new light on the interpretation of the connectivity between multisensory brain areas.",
+    "sections": [
+        {
+            "heading": "Introduction",
+            "text": "Almost any behavioral task seems to require the combined effort of many brain regions working together. Information integration across distributed brain areas is thus considered of critical importance in the brain and has been described as one of the hallmarks of consciousness (Tononi and Edelman, 1998). Integration of information from different sources is essential for behavior: to obtain a reliable description for an underlying state of interest, evidence from different sources must be combined in a proper way. Accordingly, it has been found that neural systems combine information from different sensory modalities in an optimal way, as predicted by Bayesian inference. For example, while walking, the visual input (optic flow) and vestibular signal (body movement) both carry useful informa-tion about the motion direction (Bertin and Berthoz, 2004). In the brain, these visual and vestibular inputs can be fused seamlessly to give rise to a more reliable estimation of the motion direction than either of the modalities could deliver on its own (Gu et al., 2008;Chen et al., 2013). This capability of optimal multisensory integration seems ubiquitous across modalities, as has been reported, for example, for the integration of visual and auditory cues for inferring object location (Alais and Burr, 2004), motion and texture cues for depth perception (Jacobs, 1999), visual and proprioceptive cues for hand position (van Beers et al., 1999), and visual and haptic cues for object height (Ernst and Banks, 2002).\nHowever, exactly how the brain integrates information optimally from multiple sources using synaptic communication and neural activity alone remains unresolved. A straightforward hypothesis is that a dedicated integration area, which receives feedforward inputs from all sensory modalities to be combined, pools and integrates all of the incoming information (Ma et al., 2006;Alvarado et al., 2008;Magosso et al., 2008;Ursino et al., 2009;Ohshiro et al., 2011). Although it has been shown that optimal multisensory integration could be achieved within such a dedicated area under certain conditions (Ma et al., 2006), the hypothesis does not touch upon the recent experimental findings that many interconnected multisensory areas are involved in the integration of sensory signals instead of just a single dedicated area (Gu et al., 2008;Chen et al., 2011bChen et al., , 2013)). Here, we argue that the existence of many multisensory areas should not be just seen as added complexity to the hypothesis of having one dedicated integration area, but instead might be at the core of how the brain coordinates the flow of information.\nUsing biological realistic neural network modeling, we explored theoretically how interconnected areas could integrate information in a distributed fashion. We developed a decentralized architecture for multisensory integration in which multisensory areas are connected with each other reciprocally and show that information integration can be done in an optimal manner without the need for a central area that would receive and pool all available information. As an example, we consider the task of inferring the heading direction from visual and vestibular cues and found that, when describing the interconnected multisensory areas dorsal medial superior temporal (MSTd) area and ventral intraparietal (VIP) area as a decentralized system, model predictions are in good agreement with biological observations. The decentralized system can near-optimally integrate visual and vestibular information in a wide parameter region and neural activations are consistent with the characteristic properties of neuronal responses observed during multisensory integration, including the inverse effectiveness, the spatial principle, and the reliability-based combination (Fetsch et al., 2013).\nFinally, our theoretical analysis reveals that the strength of the connectivity between different multisensory areas might be related to prior knowledge about the similarity, or the probability of cooccurrence, of stimuli that are to be integrated. Therefore, our decentralized view of information integration not only provides an alternative hypothesis of how the brain might solve the challenge of integrating information, it also suggests a new interpretation of the function of connectivity within and between multisensory areas.",
+            "n_publication_ref": 18,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "Materials and Methods",
+            "text": "Neural network models for decentralized information integration. In our study, a decentralized system consists of N ͑N Ն 2͒ reciprocally coupled modules. Each module is modeled as a continuous attractor neural network (CANN) (Wu et al., 2008). Excitatory neurons in each CANN receive inputs from a stimulus feature , for example, the heading direction, and their preferred stimulus values are uniformly distributed in the parameter space ͑Ϫ, ͔ with periodic boundary condition. Let u l ͑, t͒ and r l ͑, t͒ denote the synaptic input and the firing rate, respectively, of neuron in network l at time t. The network dynamics is given by the following:\nѨu l ͑, t͒ Ѩt ϭ Ϫu l ͑, t͒ ϩ mϭ1 N ͵ Ϫ W lm ͑, Ј͒r m ͑Ј, t͒dЈ ϩ I l ͑, t͒ (1)\nwhere is a time constant and is the neuronal density. W lm ͑, Ј͒ represents the connection strength from neuron Ј in network m to neuron in network l. I l ͑, t͒ is the feedforward input from an unisensory brain area conveying the information of stimulus l.\nEach CANN contains an inhibitory neuronal pool that normalizes the response of excitatory neurons divisively according to the overall activity level of the network. That is, the firing rate r l ͑, t͒ of neuron in network l is given by the following:\nr l ͑, t͒ ϭ ͓u l ͑, t͔͒ ϩ 2 1 ϩ k ͵ Ϫ ͓u l ͑Ј, t͔͒ ϩ 2 dЈ (2)\nwhere ͓ x͔ ϩ denotes rectification of negative values; that is, ͓ x͔ ϩ ϭ 0 for x Յ 0 and ͓ x͔ ϩ ϭ x for x Ͼ 0. The parameter k controls the global inhibition strength.\nThe excitatory connection strength between two neurons depends on the distance of the neurons in feature space in a Gaussian manner (see Fig. 2C); that is:\nW lm ͑, Ј͒ ϭ J lm ͱ2a lm exp ͫ Ϫ ͑ Ϫ Ј͒ 2 2a lm 2 ͬ (3)\nwhere J lm is a positive overall connection strength parameter and a lm is the connection width in feature space. Note that W ll denotes the recurrent connections between neurons within the same network l and W lm , for l m, represents the reciprocal connections between neurons from different networks. When stimulus l is presented, we assume that an internal representation (also called cue) of stimulus l is generated in an unisensory cortical area; for example, the medial temporal (MT) or parieto-insular vestibular cortex (PIVC). Network l then receives the cue l as a feedforward input from the corresponding unisensory area. How the unisensory area represents the cue is largely unknown, so we follow previous approaches that the input has a Gaussian shape with multiplicative noise (Dene `ve and Pouget, 2004;Ma et al., 2006), as follows:\nI l ͑, t͉s l ͒ ϭ ␣ l exp ͫ Ϫ ͑ Ϫ l ͒ 2 4a ll 2 ͬ ϩ l ͑͒ l ͑, t͒ ϩ I Bkg ͑, t͒ (4)\nwhere l is the stimulus feature value conveyed by sensory cue l to network l. Because of the multiplicative noise, ␣ l is the signal strength and measures the reliability of the cue (Ma et al., 2006). The term l ͑͒ l ͑, t͒ denotes the input noise, with noise variance l 2 ͑͒ ϭ F l ␣ l e\nϪ͑Ϫl͒ 2 /4a ll 2 proportional to the input intensity and F l denotes the Fano factor of the input. l ͑, t͒ is a Gaussian white noise of zero mean and unit variance. To include spontaneous activity, a background input I Bkg ͑, t͒ ϭ ͗I Bkg ͘ ϩ ͱF l I Bkg l ͑, t͒ is added, regardless of whether cue l is present.\nThe mean of the background input is the same for all neurons. Input noise l ͑, t͒ and background noise l ͑, t͒ are independent of each other, satisfying ͗ l ͑, t͒ m ͑Ј, tЈ͒͘ ϭ ␦ lm ␦ Ј ␦͑t Ϫ tЈ͒, ͗ l ͑, t͒ m ͑Ј, tЈ͒͘ ϭ ␦ lm ␦ Ј ␦͑t Ϫ tЈ͒, and ͗ l ͑, t͒ m ͑Ј, tЈ͒͘ ϭ 0, where ␦ xxЈ and ␦͑x Ϫ xЈ͒ are the Kronecker and Dirac delta functions, respectively.\nDynamics of the reciprocally coupled networks. Because of the translational invariance of the recurrent connections in a CANN, the dynamics of a CANN is dominated by a few dynamical modes corresponding to distortions in height, position, and other higher-order features of the activity bump (Fung et al., 2010;Zhang and Wu, 2012). It was shown previously that one can project the network dynamics onto its dominant modes to simplify the mathematical analysis significantly (Fung et al., 2010). In the weak input limit (i.e., ␣ l is sufficiently small compared with the recurrent inputs), the change of the bump position is the dominant motion mode of the network dynamics and other distortions of the bump can be neglected. Note that the weak input limit assumption is not strictly true for all parameters considered in the Results section, where the bump height (but not the higher modes) will nevertheless be significantly affected by the input. Therefore, in addition to the following theoretical analysis, below we conducted numerical simulations in which the full dynamics were simulated and thus no assumption on the constancy of the bump height was necessary. The dominant mode corresponding to the change of the bump position is written as follows:\n1 ͑ ͉ z ˆ͒ ϭ ͩ Ϫ z â ͪ exp ͫ Ϫ ͑ Ϫ z ˆ͒2 4a 2 ͬ (5)\nwhere z ˆis a free parameter denoting the position of the bump and a is the width of the bump. Note that projecting a function f͑͒ onto a motion mode ͑ ͉ z ˆ͒ is to compute the quantity ͐ f͑͒͑ ͉ z ˆ͒d/͐ ͑ ͉z ˆ͒2 d. If only the position of the bump varies significantly with the feedforward input, then the network dynamics can be solved by using the following Gaussian ansatz: (7)   where U l and R l represent the mean values of the bump height, which are treated unchanged in the statistically stationary state.\nu l ͑, t͒ Ϸ U l exp ͫ Ϫ ͑ Ϫ z ˆl͑t͒͒ 2 4a 2 ͬ , l ϭ 1, 2, (6) r l ͑, t͒ Ϸ R l exp ͫ Ϫ ͑ Ϫ z ˆl͑t͒͒ 2 2a 2 ͬ , l ϭ 1, 2,\nTaking two reciprocally connected networks as an example, we show how the projection of the network dynamics onto the dominant motion mode simplifies the description. Substituting the above Gaussian ansatz into the network dynamics (Eq. 1) and projecting it onto the motion mode (Eq. 5), we obtain the dynamics of the bump position for network 1 (the result of network 2 is the same except that the indices are interchanged), as follows:\nU 1 dz ˆ1 dt ϭ J 12 R 2 ͱ2 ͑z ˆ2 Ϫ z ˆ1͒e Ϫ ͑ z ˆ2Ϫz ˆ1͒ 2 8a 2 ϩ ␣ 1 ͑ 1 Ϫ z ˆ1͒e Ϫ ͑1Ϫz ˆ1͒ 2 8a 2 ϩ 2 ͱaF l ͑2͒ 1/4 ͱ͑2/3͒ 3/ 2 ␣ 1 ϩ I Bkg 1 ͑t͒ (8)\nFor ͑z ˆ2 Ϫ z ˆ1͒/8a 2 and ͑ 1 Ϫ z ˆ1͒/8a 2 sufficiently small (which is the case for the parameter regime we consider), the exponential terms can be safely ignored, and the above equation, together with the one for network 2, are further simplified to the following:\ndz ˆ1 dt ϭ g 12 ͑ z ˆ2 Ϫ z ˆ1͒ ϩ h 1 ͑ 1 Ϫ z ˆ1͒ ϩ ␤ 1 1 ͑t͒ (9) dz ˆ2 dt ϭ g 21 ͑ z ˆ1 Ϫ z ˆ2͒ ϩ h 2 ͑ 2 Ϫ z ˆ2͒ ϩ ␤ 2 2 ͑t͒ (10)\nwhere the following coefficients:\ng lm ϭ J lm R m ͱ2U l , h l ϭ ␣ l U l , ␤ l 2 ϭ 4aF l ͱ2͑U l ͒ 2 ͫͩ 2 3 ͪ 3/ 2 ␣ l ϩ I Bkgͬ (11)\ndenote, respectively, the effective strengths of the reciprocal connections, the input signal, and the noise. Note that above equations are nonlinear because the effective strengths g lm , h l , and ␤ l are nonlinearly dependent with network and input parameters.\nWe consider the simple case that the two networks have the same parameter values and simultaneously receive identical cue intensities (but noises are independent to each other). This simplifies the notation to J ll ϵ J rc , J lm ϵ J rp ͑l m͒ and the effective parameters to g lm ϵ g rp , h l ϵ h and ␤ l ϵ ␤. By this simplifying notations in Equation 9, we arrive at Equation 33.\nIn a general decentralized system of N reciprocally connected networks, the dynamics of the network estimations (i.e., the bump positions) can be analogously solved as follows:\ndz d t ϭ Mz ˆ؉ H ؉ ⌫ (12)\nwhere z ‫؍ˆ‬ ͕ z ˆl͖, ‫؍‬ ͕ l ͖ and ‫؍‬ { l }, for l ϭ 1,…, N. The system matrix is M ‫؍‬ G ؊ H, where G lm ϭ g lm Ϫ ␦ lm ¥ mЈ g lmЈ . H and ⌫ are diagonal matrices, with H ll ϭ h l and ⌫ ll ϭ ␤ l . Note that if cue i is not present, then we set ␣ i ϭ 0.\nThe steady state of the mean of z ˆis given by the following:\n͗z ˆ͘ ϭ ϪM Ϫ1 H (13)\nThe covariance of z ˆin the steady state, denoted as Cov(z ˆ), satisfies\nMCov( z ˆ) ؉ (MCov( z ˆ)) T ‫؍‬ Ϫ⌫⌫ T(14)\nTo calculate Cov(z ˆ), we diagonalize the matrix M as MP ‫؍‬ P⌳, where ⌳ and P are the eigenvalues and eigenvectors of M, respectively. Defining y ‫؍‬ P ؊1 z ˆ, we have ⌳Cov(y) ϩ ͓⌳Cov(y)͔ T ϭ ϪP ؊1 ⌫⌫ T P ؊T , so Cov(y) can be solved as ͓Cov(y\n)͔ ij ϭ Ϫ͓P ؊1 ⌫⌫ T P ؊T ͔ ij /͑⌳ ii ϩ ⌳ jj ͒.\nFinally, we obtain the following:\nCov͑z ˆ) ‫؍‬ PCov(y)P T (15)\nGiven the number of networks and cueing conditions, the detailed expressions for the estimation mean and variance of a network can be solved by using Equations 13 and 15.\nIntegration performance of two reciprocally coupled networks. It is difficult to solve analytically the integration performance of reciprocally coupled networks for more general parameter settings. We found in simulations that, over a wide range of parameters, our model achieved near Bayesian optimal performance, as shown in Figure 4. To demonstrate the underlying idea, we present below a special case in which Bayesian integration is achieved perfectly.\nWe consider two coupled networks that have the same parameter values. According to Equations 13 and 15, the mean and the variance of the estimate of network 1 are given by the following:\n͗z ˆ1͘ ϭ ͑ g 21 ϩ h 2 ͒h 1 1 ϩ g 12 h 2 2 g 12 h 2 ϩ g 21 h 1 ϩ h 1 h 2 (16) V͑z ˆ1͒ ϭ ͓͑ g 21 ϩ h 2 ͒tr(M͒ ϩ g 21 g 12 ]␤ 1 2 Ϫ g 12 2 ␤ 2 2 2tr(M)͑h 1 h 2 ϩ g 21 h 1 ϩ g 12 h 2 ͒ (17\n)\nwhere tr(M) is the trace of M; that is, tr(M) ϭ ¥ iϭ1 2 M ii ϭ Ϫ͑g 12 ϩ g 21 ϩ h 1 ϩ h 2 ͒. To arrive at Equations 44 and 45, two approximations were made for simplification. First, we assumed that coefficients g lm and h l in Equations 9 and 10 are approximately unchanged with respect to stimulus conditions and abbreviate to g lm ϵ g rp and h l ϵ h (␣ l 0), respectively. Moreover, we assumed further that the effective noise strength ␤, which is the ratio of noise variance over bump height and reflects the signal-to-noise ratio of the network, is approximately unchanged across different stimulus conditions. This assumption is supported by the experimental observation that Fano factors of neural responses change insignificantly with stimulus conditions (Gu et al., 2008). With these approximations and symmetric parameter settings, it is straightforward to derive Equations 44 and 45.\nIntegration performance of N reciprocally coupled networks. In a decentralized system composed of N all-to-all reciprocally connected networks, the estimation results of each network can also be calculated from Equations 13 and 15. When the N networks have same parameters and in response to N q Ͻ N cues (suppose they are cue 1 to cue N q for simplic-ity), the estimation mean and variance of network l with direct cue input l ͑l ϭ 1.…, N q ͒ are as follows:\nz ˆl ϭ N q g Ϫ1 l ϩ Nh Ϫ1 i ϭ1 Nq i N q ͑Nh Ϫ1 ϩ g Ϫ1 ͒ (18) V͑ z ˆl͒ ϭ ␤ 2 2 ͑Nh Ϫ1 ϩ N q g Ϫ1 ͒h Ϫ1 N q ͑Nh Ϫ1 ϩ g Ϫ1 ͒(19)\nNote that if only cue l is presented, it is V͑z ˆl͒ ϭ ␤ 2 h Ϫ1 /2 and the dependence on the effective reciprocal strength g vanishes, although the reciprocal connections are still there. This is because, without receiving cue inputs, other networks are unable to provide information about cue l.\nThe estimates of the networks without direct cue input (l ϭ N q ϩ 1, … N) are as follows:\nz ˆl ϭ 1 N q iϭ1 N q i (20) V͑ z ˆl͒ ϭ ␤ 2 2 ͑N q ϩ 1͒ g Ϫ1 ϩ Nh Ϫ1 NN q (21)\nA Bayesian observer of multisensory integration. To understand the behavior of the decentralized system, the following Bayesian observer for multisensory integration is considered in this study (Bresciani et al., 2006;Ernst, 2006;Roach et al., 2006;Sato et al., 2007). Suppose that two sensory cues c 1 and c 2 are generated by two stimuli s 1 and s 2 , respectively. Under the assumption that the noise processes of two cues given two stimuli are conditionally independent, the posterior distribution p͑s 1 , s 2 ͉ c 1 , c 2 ͒ satisfies the following:\np͑s 1 , s 2 ͉ c 1 , c 2 ͒ ϰ p͑c 1 ͉ s 1 ͒ p͑c 2 ͉ s 2 ͒ p͑s 1 , s 2 ͒ (22\n)\nwhere p͑c i ͉ s i ͒ ͑i ϭ 1, or 2) is the likelihood function and is modeled as a Gaussian distribution with mean i and variance i 2 . p͑s 1 , s 2 ͒ is called the combination prior and specifies the probability of a particular combination of stimuli s 1 and s 2 . Following previous studies, we choose a Gaussian function of the discrepancy between two stimuli (Shams et al., 2005;Bresciani et al., 2006;Ernst, 2006;Roach et al., 2006) as follows:\np͑s 1 , s 2 ͒ ϭ 1 ͱ2 cp L s exp ͫ Ϫ ͑s 1 Ϫ s 2 ͒ 2 2 cp 2 ͬ (23)\nwhere L s is the width of the feature space; that is, L s ϭ 2 in case of estimating heading direction, and the parameter cp measures the similarity between two stimuli. Note that the prior of each cue, p͑s i ͒ ͑i ϭ 1 or 2) has a uniform distribution across the feature space.\nIn the case of integrating N cues, we consider that the combination prior of the underlying stimuli is the product of the Gaussian function in the form of Equation 23 for all stimulus pairs, that is:\np͑s 1 , s 2 , …, s N ͒ ϭ 1 Z i j p ˜͑s i , s j ͒ ϭ 1 Z i j exp ͫ Ϫ ͑s i Ϫ s j ͒ 2 2͑ ͱN/2 cp ͒ 2ͬ , i, j ʦ ͓1, N͔ (24)\nwhere z is a normalization factor. p ˜͑s i , s j ͒ has the same form as p͑s i , s j ͒ except its variance is N cp 2 /2. This ensures that the combination prior for s 1 and s 2 in the case of N ͑N Ͼ 2͒ cues, calculated by p N ͑s 1 , s 2 ͒ ϭ ͐p͑s 1 , s 2 , …, s N ͒ds 3 ds 4 … ds N equals Equation 23 in the case of N ϭ 2. Nevertheless, the marginal distribution of each stimulus p͑s i ͒ is still a uniform distribution.\nOptimal integration in a decentralized system with N modules and N cues. Although we show in the Results section that integration is optimal for the special case of a decentralized system of two modules and two cues, the integration of the decentralized system with N modules and N cues is generally optimal in the following sense.\nLet us first consider the integration of three cues in a Bayesian observer with above joint combination prior (Eq. 24). When all three cues are simultaneously presented, the marginal posterior of s 1 can be derived as follows:\np͑s 1 ͉ c 1 , c 2 , c 3 ͒ ϭ ͵͵ p͑s 1 , s 2 , s 3 ͉ c 1 , c 2 , c 3 ͒ds 2 ds 3 ϰp͑c 1 ͉ s 1 ͒ ͵͵ p͑c 2 ͉ s 2 ͒ p͑c 3 ͉ s 3 ͒ p͑s 1 , s 2 , s 3 ͒ds 2 ds 3 (25)\nNote that the last 2-fold integral in the above equation is proportional to p͑s 1 ͉ c 2 , c 3 ͒. However, p͑s 1 ͉ c 2 , c 3 ͒ cannot be further factorized as p͑s 1 ͉ c 2 ͒ ϫ p͑s 1 ͉ c 3 ͒. Therefore, we have the following:\np͑s 1 ͉ c 1 , c 2 , c 3 ͒ϰp͑s 1 ͉ c 1 ͒ p͑s 1 ͉ c 2 , c 3 ͒ (26)\nIn a general integration of N cues, we found that the posterior of s 1 can be factorized as a pairwise product of the posterior under cue l and that of all other conditions excluding cue l (see also Eq. 50) as follows:\np͑s ˆl ͉ c l , ഫ i l c i ͒ϰp͑s ˆl ͉ c l ͒ p͑s ˆl ͉ ഫ i l c i ͒(27)\nThe mean and variance of the marginal posterior of the Bayesian observer can be found from Equations 18 -21 by replacing h Ϫ1 by 2 and g rp Ϫ1 by N cp 2 /2 and deleting coefficients ␤ 2 /2. Therefore, in a decentralized sys- tem, network l is an optimal estimator for stimulus l by integrating its feedforward inputs from cue l and reciprocal inputs from other networks.\nEvaluating the deviations of the networks' performance from the Bayesian observer. For evaluating the optimality of the integration in the simulation, we examined the deviations of the actual mean and variance of the network estimations from the predicted mean and variance of the Bayesian observer, respectively. For the robustness against parameter variations (see Fig. 4F ), we followed Fetsch et al. (2009) and used the bias of the cue weight to evaluate the bias of the mean. For example, in network 1, the bias of cue 1's weight is as follows:\n⌬w 1 net1 ϭ w 1 net1 Ϫ w ˆ1 net1 (28\n)\nwhere\nw 1 net 1 ϭ ͑͗z 1 ͉ c 1 , c 2 ͘ Ϫ ͗z 1 ͉ c 2 ͒͘/͑͗z 1 ͉ c 1 ͘ Ϫ ͗z 1 ͉ c 2 ͒͘ is the actual weight of cue 1 in network 1 and w ˆ1 net 1 V ϭ V ͑z 1 ͉ c 2 ͒/͓V͑z 1 ͉ c 1 ͒ ϩ V͑z 1 ͉ c 2 ͔͒\nis the predicted value. In each network, the bias of cue 2's weight has the opposite sign of the bias of cue 1's weight; that is, ⌬w\n1 net 1 ϭ Ϫ⌬w 2 net 1\n, because w 1 ϩ w 2 ϭ 1 in the integration of two cues. Therefore, for the analysis of Figure 4F, we only calculated the bias of the weight of the direct cue ⌬w dirϪcue in each network. The direct cue of network l is cue l, meaning that the network receives the input of cue l directly from feedforward connections instead of via reciprocal inputs from other networks. A positive ⌬w dirϪcue indicates that the network's estimation is biased toward its direct cue, whereas a negative value denotes a bias to its indirect cue. The deviation of the variance was measured by the deviation between the actual variance and the predicted variance (from Eq. 46), namely:\n⌬Var ϭ V actual V predict Ϫ 1(29)\nA positive ⌬Var indicates that the accuracy is worse than the predicted value; a negative ⌬Var denotes improvement over the prediction.\nNetwork simulations and parameters. In the simulations, two or more CANN networks were coupled together. Each CANN consisted of 180 neurons, which were uniformly distributed in the feature space ͑Ϫ180Њ, 180Њ͔. The parameters of the networks were chosen symmetrically to each other; that is, all of the structural and input parameters of the networks had the same value. However, the networks received independent noise. The synaptic time constant was rescaled to 1 as a dimen-sionless number and the time step size was 0.01. All connections had the same width: a lm ϭ 40°.\nIn the following, we list the parameter values used if not mentioned otherwise. The recurrent connection strength J 11 ϭ J 22 ϵ J rc was set in the range of ͓0.4, 0.6͔J c , where J c ϭ 2 ͱ2͑2͒ 1/4 ͱka ϭ 0.896 is the minimal strength for holding persistent activity. Therefore, no persistent activity occurred in a network after withdrawing the stimulus. The strength of the reciprocal connections J 12 ϭ J 21 ϵ J rp was in the range of ͓0.2, 0.9͔J rc ; that is, always smaller than the recurrent connections. The input strength ␣ was scaled relative to U m 0 ϭ J c /4ak ͱ ϭ 6.316 and distributed in the region of ͓0.4, 1.5͔U m 0 , where U m 0 is the synaptic bump height that a network can hold without external input when J rc ϭ J c . The interval of the input strength was wide enough to cover the superadditive and nearly saturated regions. The strength of the background input was ͗I Bkg ͘ ϭ 1 and all Fano factors of the cues and background inputs were set to 0.5. This resulted in a Fano factor of single neuron responses on the order of 1. In the simulation, the activity bump position was estimated by using a population vector; that is, calculating the center-of-mass of the activity bump. Specific parameter settings are mentioned in the figure captions.\nDiscrimination performance of single neurons. To reproduce experimental findings (Gu et al., 2008), we designed a computational task to discriminate whether a stimulus value is smaller or larger than 0°based on single neuron activities. Similar to the experiment, we chose an example neuron from network 1 that preferred a heading direction of Ϫ40°. The directions of two congruent cues were simultaneously changed from Ϫ30°to 30°. In each direction, three stimulus conditions (see Fig. 3A) were applied for 50 trials and the firing rate distributions were obtained (see Fig. 5 A,B). We used receiver operating characteristic (ROC) analysis (Britten et al., 1992) to compute the ability of the example neuron to discriminate between two opposite heading directions; that is, Ϫ2°versus 2°. The ROC value counts the proportion of instances in which the stimulus was correctly judged to be larger than 0°. Neurometric functions (see Fig. 5C) were constructed from these ROC values and were fitted with cumulative Gaussian functions to determine neuronal discrimination thresholds (the SD of the cumulative Gaussian function). The predicted threshold in the combined cue condition can be calculated using Bayesian inference as follows:\nprediction ϭ 1 2 / ͱ 1 2 ϩ 2 2 (30)\nwhere 1 and 2 are the neuronal discrimination thresholds under cue 1 and cue 2, respectively.\nVirtual experiments reproducing empirical principles of multisensory integration. We further performed simulations to determine whether the decentralized system can reproduce some characteristic neural response properties observed during multisensory integration, namely the inverse effectiveness, the spatial principle, and the reliability-dependent combination (Morgan et al., 2008;Fetsch et al., 2013). The neuron with feature value 0°in network 1 was used as an example neuron. Its mean firing rates under different tests are plotted in Figure 6. The virtual experiments simulated the protocols of the biological experiments. In the experiments examining the inverse effectiveness and the spatial principle, cue 1 and cue 2 had identical intensity and noise strength and the intensity increased from 0 to 1.5 U m 0 , which produced a near saturated neuronal response. In the test of the inverse effectiveness, both cues were located at 0°, whereas in the spatial principle test, cue 1 was fixed at 0°, but cue 2 was varied from 0°to 2a, where a is the turning width of the neuron. To test the reliability-dependent combination (Morgan et al., 2008), the responses of the example neuron were measured under eight different mean values for each cue (ranging from Ϫ180°to 180°with a step size of 45°), with 64 combinations in total. The intensity of cue 1, ␣ 1, was de- creased from 0.46␣ 2 to 0.12␣ 2, which in turn decreased the reliability of cue 1 whereas the intensity of cue 2, ␣ 2 , was fixed. For each combination of two cues, the bimodal tuning curve R bi ͑ 1 , 2 ͒ was fitted as a linear model of two unimodal tuning curves as follows:\nR bi ͑ 1 , 2 ͒ ϭ w 1 R 1 ͑ 1 ͒ ϩ w 2 R 2 ͑ 2 ͒ ϩ C (31)\nwhere R bi ͑ 1 , 2 ͒ denotes the firing rate when the two cues are located at 1 and 2, respectively. R 1 ͑ 1 ͒ and R 2 ͑ 2 ͒ are the unimodal tuning curves when only cue 1 or only cue 2 is presented, respectively. The neuronal weights w 1 , w 2 , and offset C were determined by minimizing the meansquared error between the predicted bimodal responses and the measured actual neuronal responses.",
+            "n_publication_ref": 21,
+            "n_figure_ref": 9
+        },
+        {
+            "heading": "Results",
+            "text": "",
+            "n_publication_ref": 0,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "Decentralized architecture for information integration",
+            "text": "In engineering applications, three principled architectures have been proposed to integrate observations (cues) from different stimuli (Durrant-Whyte and Henderson, 2008): the centralized, the distributed, and the decentralized architectures (Fig. 1). In the centralized architecture (Fig. 1A), the raw observations from sensors are sent directly into a central fusion center, which estimates the underlying state from the raw observations of all of the modalities. Although simple in structure, the centralized architecture suffers from the computational burden of the fusion center, the high communication load (because all raw observations of all modalities must be delivered into a single center), and the susceptibility of being paralyzed once the fusion center fails. Some computational tasks can be distributed to modular local processors (Fig. 1B). The processor modules compute local estimates in parallel and then only send the results to the central processor. However, this distributed architecture also suffers from the robustness problem because a central fusion center still exists. In contrast, in a decentralized architecture (Fig. 1C), all of the processors communicate with the others directly so that a central fusion center becomes obsolete. Each processor first makes a local estimate according to its own observation and then corrects it by integrating the local estimates from the other processors to obtain a global estimate.\nWould it be possible for cortical circuitry to successfully adopt a decentralized architecture to integrate multisensory information? Anatomically, there is some supportive evidence. For instance, MSTd and VIP are two brain areas that are deeply involved in the integration of visual and vestibular information for inferring the heading direction and do so optimally (Gu et al., 2008;Chen et al., 2013). There are abundant reciprocal connections between MSTd and VIP (Boussaoud et al., 1990;Baizer et al., 1991) that cause the activities of the two areas to be correlated with each other (Vincent et al., 2007). In addition, MSTd and VIP receive feedforward visual and vestibular inputs from MT cortex (Boussaoud et al., 1990) and PIVC (Lewis and Van Essen, 2000) (Fig. 1D), where MT and PIVC are unisensory regions that belong to the visual and vestibular systems, respectively. Together, MSTd and VIP appear to be good candidates for local processors within a decentralized information integration architecture (cf. Fig. 1C,D).",
+            "n_publication_ref": 8,
+            "n_figure_ref": 7
+        },
+        {
+            "heading": "Biologically plausible decentralized network model for information integration",
+            "text": "What realistic neural network model could be used to implement a local processor that allows to connect different local processors with each other as required by a decentralized architecture? Although different neural network models might be applicable in principle, we will show in the following that reciprocally interconnected CANN modules behave naturally like a decentralized information integration system that shows near-optimal cue integration over a wide parameter range in a biologically realistic manner. We first describe our model for the simplest case of two symmetrically connected processors that receive feedforward inputs (cues) from their associated stimuli (Fig. 2A) and then generalize it to multiple cues.\nCANNs are widely used biologically realistic network models to implement cortical computations for continuous stimuli (Dayan and Abbott, 2001;Pouget et al., 2003), including estimating heading directions from noisy inputs (Zhang, 1996). In a typical CANN (full dynamics can be seen in Eq. 1-4), every neuron has a tuning function with respect to the same stimulus feature (Eq. 7); for example, the heading direction, but each neuron is tuned to a gradually different feature value and all neurons cover the whole feature space (Fig. 2B). The firing rate of CANNs is a nonlinear function of the input and thus neuron activations saturate in a realistic manner (Eq. 2; Fig. 2D). Because recurrent connections are translation-invariant in the space of neuronal preferred feature values (Fig. 2C), the population activity in a Decentralized neural network model for information integration. A, Decentralized information integration system consisting of two reciprocally connected networks, each receiving an independent cue. B, Detailed network structure of the decentralized system in A. Each network module is modeled as a CANN. Small circles represent neurons with preferred feature indicated by the arrow inside. An inhibitory neuron pool (the gray circle in the center) sums all activities of excitatory neurons and generates divisive normalization. The blue arrows indicate translation-invariant excitatory connections, with strength represented by color; red lines are inhibitory connections. Each network module receives an independent cue as feedforward input. C, Recurrent and reciprocal connections in the system are translation-invariant; that is, the connection strength between two neurons only depends on their distance in feature space. D, Activation function of network neurons. The saturation for large synaptic input stems from the divisive normalization by the inhibitory neuron pool in each network. E, Population activity is a family of bell-shaped bumps (dashed lines), the position of which is determined by the stimulus (solid lines). F, Peak firing rate (bump height) encodes the reliability of network estimation.\nCANN evolves into one of many smooth bell-shaped bumps (an attractor state, solid line in Fig. 2E). Moreover, the activity bump state will be stabilized at a position (in feature space) that has maximal overlap with the input (Fig. 3C), achieving a templatematching operation that essentially infers the underlying stimulus value near a maximal likelihood estimator (Dene `ve et al., 1999;Wu et al., 2002).\nBecause the position of the population activity bump can thus be interpreted as the estimate of the CANN given noisy sensory information, for example, the current guess that the neural system has about the heading direction, a CANN is an ideal imple-mentation of a local processor in the decentralized architecture. Therefore, in our model, each local processor is modeled by a CANN that receives direct cue (feedforward) input from an unisensory brain area (Eq. 4), such as MSTd (VIP) receives feedforward inputs about visual (vestibular) information from MT (PIVC) (compare to the scheme in Fig. 2B). The feedforward inputs are localized bumps corrupted by (multiplicative) noise, so that the height of input bump ␣ encodes the reliability of external stimulus (Eq. 4). The current estimate of a local network about the heading direction, that is, the bump position, is referred to as z ˆ. Note that, in response to a localized noisy bump Note that the variance of the network estimate when presenting two cues decreases compared with that when presenting single cues. Also note that the estimate based on the direct cue has less variance than that based on the indirect cue alone. F, Histograms and Gaussian fits of network 1's estimates under three stimulus conditions represent the posterior of the underlying state. Parameters: J rc ϭ 0.5J c , J rp ϭ 0.5J rc , and ␣ ϭ 0.5U m 0 .\ninput, the height of network's response increases superlinearly (due to divisive normalization) with the reliability of network's estimation (Fig. 2F ) (Dene `ve et al., 2001;Dene `ve and Pouget, 2004;Ma et al., 2006).\nTo achieve information exchange between local processors, we assume that CANN modules are interconnected. We show below that, if reciprocal connections between individual CANN modules are defined in a translation-invariant manner similar to the recurrent connections (Fig. 2C), the model system naturally integrates information from two cues and thus implements a decentralized information integration system. Figure 3 illustrates the dynamics of information integration in a decentralized system. To simulate a typical cue integration experiment, we first applied two single cues individually and then applied both of them simultaneously (Fig. 3A). Figure 3B shows the population activities in response to two congruent cues both centered at 0°. When two cues were simultaneously presented, the networks' responses increased compared with single-cue conditions and the variance of the networks' estimates (bump positions, Fig. 3C) in turn decreased (Fig. 3 D,E), indicating that each network successfully integrated information from two sources.\nTo understand the network dynamics theoretically, we first looked at the dynamics of the estimation within an individual processor (CANN module) without connection to other processors. By simplifying the full network dynamics of a single processor (by ignoring distortions of the activity bump across cue conditions), we found that the current local estimate z ˆ(the bump position) can be written as follows (see Eq. 5-8 in Materials and Methods):\ndz ˆ͑t͒ dt ϭ ͑h ϩ ␤͑t͒͒ Ϫ hz ˆ͑t͒ (32\n)\nwhere h ϩ ␤͑t͒ represents the input signal centered at , with the effective strength h corrupted with independent Gaussian noise ͑t͒ of effective strength ␤. Note that the effective strengths are nonlinearly dependent on network and input parameters (see Eq. 11). From the dynamics in Equation 32, one notes that, if the current bump position corresponds to the input cue value , it will be only driven by noise (of zero mean) and thus on average deliver the correct estimate. If the processor's current estimate is inaccurate, it will update its estimate according to the deviation between the input and the current estimation and thus eventually arrive at the correct estimate.\nIf now two processors are coupled together (as in Fig. 2B), the dynamics of the estimate in network 1 can be approximated as follows (see Eq. 9 and 10 in Materials and Methods; the estimate of network 2 is obtained by relabeling):\ndz ˆ1͑t͒ dt ϭ ͓͑h 1 1 ϩ ␤ 1 1 ͑t͒͒ Ϫ h 1 z ˆ1͑t͔͒ ϩ g rp ͑ z ˆ2͑t͒ Ϫ z ˆ1͑t͒͒ (33)\nThe additional term in comparison with Equation 32 is related to the communication between networks. Namely, the difference between the two local estimates, g rp ͓ z ˆ2͑t͒ Ϫ z ˆ1͑t͔͒ conveys the information of cue 2 and is additionally used to adjust the network's estimate (g rp is related to the coupling strength, see Materials and Methods). Therefore, communication through reciprocal connections enables each processor to integrate information from multiple modalities.\nIf the information from two cues is combined together, one would expect that the reliability of the joint estimate increased.\nConsider that the two networks received two congruent and identical cues, that is, the cues have the same intensity h 1 ϭ h 2 ϵ h and the same feature value 1 ϭ 2 ϵ . If the networks are uncoupled (g rp ϭ 0), each network will deliver an unbiased estimate, ͗z ˆ͘ ϭ with variance V͑z ˆ͒ ϭ ␤ 2 /2h (set g lm zero in Eq. 17). Note that the variance V͑z ˆ͒ is a decreasing function with activity bump height, indicating that the bump height encodes the reliability. When two networks are reciprocally coupled, the variance of the estimates of both networks becomes V͑z ˆ͒ ϭ ␤ 2 4 ͩ 1 h ϩ 1 h ϩ 2g rp ͪ , which decreases with the effective reciprocal coupling strength g rp, implying that the reciprocal connections convey the information from other cues to improve the accuracy of each network's estimate. These theoretical predictions of the variances correspond well with the simulations (red dashed line in Fig. 3E). Together, we found that a system of interconnected CANN modules fulfills the requirements that are conceptualized in the decentralized framework of information integration: local processors compute local estimates and reciprocal interactions are used to correct the estimates by integrating information from other processors. However, whether information is integrated in an ideal way remains to be seen. We next introduce a Bayesian observer to evaluate the performance of the information integration of the decentralized system and then compare the network's estimation with the Bayesian observer in both theory and simulation.",
+            "n_publication_ref": 8,
+            "n_figure_ref": 17
+        },
+        {
+            "heading": "General Bayesian observer of multisensory integration",
+            "text": "To assess the performance of information integration in the decentralized system, a Bayesian observer is needed as a benchmark (Ernst, 2006;Clark and Yuille, 2013). We consider a Bayesian observer for a general form of multisensory integration (Shams et al., 2005;Bresciani et al., 2006;Ernst, 2006;Roach et al., 2006). In many previous studies about multisensory integration, it is assumed a priori that a single stimulus gives raise to multiple sensory representations (cues) that are then fully integrated into an unified percept (Ernst and Banks, 2002). However, more generally, sensory evidence about an entity of interest, such as the heading direction, might instead originate simultaneously from different physical sources. For instance, the optical flow of the visual field and the body acceleration are of completely different physical origin, but still simultaneously accessible by the visual system and the vestibular system, respectively. Both physical sources may only contain some partial information about the heading direction, which can nevertheless be extracted and integrated to arrive at a better estimate of the heading direction than either cue would deliver on its own. Therefore, in our framework, we suppose that two sensory cues c 1 and c 2 are generated by two distinct stimuli s 1 and s 2, respectively, and assume that these two stimuli have some systematic covariation in regard to the entity of interest. This covariation regulates the extent of how much the two cues are informative for the inference of either of the stimuli s 1 or s 2 . We will see below that, if the covariation of the stimuli is weak, one cue does help little about inferring the other and both cues should be (nearly) independently processed and could give raise to two different percepts. Conversely, if both stimuli are strongly correlated, then both cues should be (nearly) fully integrated to arrive at improved estimates.\nMathematically, under the assumption that the noise processes of the two cues given two stimuli are independent with each other, the posterior distribution p͑s 1 , s 2 ͉ c 1 , c 2 ͒ satisfies the following:\np͑s 1 , s 2 ͉ c 1 , c 2 ͒ϰp͑c 1 ͉ s 1 ͒ p͑c 2 ͉ s 2 ͒ p͑s 1 , s 2 ͒ (34)\nwhere p͑c l ͉ s l ͒ ͑l ϭ 1, or 2) is the likelihood function indicating the probability that a particular value of cue c l is generated from a given stimulus s l and is modeled as a Gaussian distribution with mean l (stimulus feature value in Eq. 4) and variance l 2 (proportional to input intensity ␣ l in Eq. 4). p͑s 1 , s 2 ͒ is called the combination prior, which specifies the probability of the presence of s 1 and s 2. Here, we set it to be a Gaussian function of the discrepancy between two stimuli (Bresciani et al., 2006;Roach et al., 2006;Sato et al., 2007) as follows:\np͑s 1 , s 2 ͒ ϭ 1 ͱ2 cp L s exp ͫ Ϫ ͑s 1 Ϫ s 2 ͒ 2 2 cp 2 ͬ (35)\nL s is the width of feature space, for example, 2 for heading direction. Note that the prior of either stimulus, p͑s l ͒ ͑l ϭ 1 or 2), is still a uniform distribution.\nThe combination prior given by Equation 35specifies the a priori similarity between two stimuli that give raise to the two cues, respectively. Importantly, in the integration process, this combination prior determines the extent for the two cues to be integrated. Let us consider two extreme examples. When cp ϭ 0, p͑s 1 , s 2 ͒ becomes a delta function ␦͑s 1 Ϫ s 2 ͒, then the two marginal posterior distributions are exactly the same, that is,\np͑s 1 ͉ c 1 , c 2 ͒ ϭ p͑s 2 ͉ c 1 , c 2 ͒,\nmeaning that two cues should be fully integrated into a unified percept (Ernst and Banks, 2002). In the case cp ϭ ϱ, the combination prior is flat and each cue should be processed independently without any integration because no useful information can be obtained from one modality to predict the stimulus value of the other. In the case of 0 Ͻ cp Ͻ ϱ, two cues should be partially integrated, meaning that the estimated values of s 1 and s 2 can be different, but nevertheless the estimate of one of them uses the cue information from the other. In this study, we consider the general situation that cp can take different values and treat full integration as a special case.\nThe posterior of stimulus 1 can be obtained by marginalizing the joint posterior distribution as follows (the posterior for stimulus 2 has similar form by interchanging indices 1 and 2):\np͑s 1 ͉ c 1 , c 2 ͒ ϭ ͵ p͑s 1 , s 2 ͉ c 1 , c 2 ͒ds 2 ϰp͑c 1 ͉ s 1 ͒ ͵ p͑c 2 ͉ s 2 ͒ p͑s 1 , s 2 ͒ds 2 (36)\nNote that p͑c 2 ͉ s 1 ͒ϰ ͵ p͑c 2 ͉ s 2 ͒p͑s 1 , s 2 ͒ds 2 due to the conditional independence of two cues. Because a flat prior distribution of each stimulus and accordingly a flat prior distribution of each cue (from Eq. 35), we have the following:\np͑s 1 ͉ c 1 , c 2 ͒ϰp͑s 1 ͉ c 1 ͒ p͑s 1 ͉ c 2 ͒ (37)\nBecause of this factorization of the marginal posterior, the mean and variance of the estimate for each stimulus under combined cues can be derived from the mean and variance under single cues (Ernst, 2006) as follows:\nV͑s ˆl ͉ c 1 , c 2 ͒ Ϫ1 ϭ V͑s ˆl ͉ c 1 ͒ Ϫ1 ϩ V͑s ˆl ͉ c 2 ͒ Ϫ1 (38) ͗s ˆl ͉ c 1 , c 2 ͘ V͑s ˆl ͉ c 1 , c 2 ͒ ϭ ͗s ˆl ͉ c 1 ͘ V͑s ˆl ͉ c 1 ͒ ϩ ͗s ˆl ͉ c 2 ͘ V͑s ˆl ͉ c 2 ͒ , l ϭ 1, or 2 (39)\nIn more detail, the mean and variance of s 1 and s 2 can be found as follows:\n͗s ˆ͉ c 1 , c 2 ͘ ϭ 1 1 2 ϩ 2 2 ϩ cp 2 ͫ 2 2 ϩ cp 2 1 2 2 2 1 2 ϩ cp 2 ͬͫ 1 2 ͬ (40) Cov͑s ˆ͉ c 1 , c 2 ͒ ϭ 1 1 2 ϩ 2 2 ϩ cp 2 ͫ 1 2 ͑ 2 2 ϩ cp 2 ͒ 1 2 2 2 1 2 2 2 2 2 ͑ 1 2 ϩ cp 2 ͒ ͬ (41)\nwhere s ϭ ͑s 1 , s 2 ͒ T . The mean and variance of the stimulus estimates under single-cue conditions can be found by formally letting 2 ¡ ϱ (cue 1 condition) or 1 ¡ ϱ (cue 2 condition). We see that the prior parameter cp determines the extent of integration:\nwhen cp ϭ 0, ͗s ˆ1͘ ϭ ͗s ˆ2͘ ϭ ͑ 2 2 1 ϩ 1 2 2 ͒/͑ 1 2 ϩ 2 2\n͒, the estimates of two networks are identical and full integration happens (Ernst and Banks, 2002); when cp ϭ ϱ, s ˆ1 ϭ 1 , and s ˆ2 ϭ 2 , implying that the two cues are not integrated at all.\nEquations 38 and 39 show how to integrate estimates under single-cue conditions optimally with associated uncertainties into combined estimates for two stimuli, which are used as the criteria for judging whether optimality is achieved in an information integration system (Ernst and Banks, 2002;Ma et al., 2006).",
+            "n_publication_ref": 15,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "Decentralized system implements a general Bayesian observer",
+            "text": "To compare the information integration of the decentralized system to the integration predicted by the Bayesian observer, we thus compared the means and variances of the network estimations in single cue and combined cue conditions. Because the dynamics of each network's estimate could be approximated in closed form (Eq. 9 and 10), we can compute the mean and variance of the estimates in analytical terms. We found that, in the case of two symmetrically connected network modules (for a general solution, see Eq. 16 and 17), the results are given by the following (to distinguish the network estimation and Bayesian observer, the estimation of network and Bayesian observer are denoted as z ˆand s ˆrespectively):\nIf only cue 1 is presented ͑h 1 ϭ h; h 2 ϭ 0͒: ͗z ˆ͉ c 1 ͘ ϭ ͫ 1 1 ͬ , Cov(z ˆ͉ c 1 ) ϭ ␤ 2 2 ͫ h Ϫ1 h Ϫ1 h Ϫ1 g rp Ϫ1 ϩ h Ϫ1 ͬ (42)\nOnly cue 2 ͑h 1 ϭ 0; h 2 ϭ h͒:\n͗z ˆ͉ c 2 ͘ ϭ ͫ 2 2 ͬ , Cov(z ˆ͉ c 1 ) ϭ ␤ 2 2 ͫ g rp Ϫ1 ϩ h Ϫ1 h Ϫ1 h Ϫ1 h Ϫ1 ͬ (43)\nCombined cues ͑h 1 ϭ h 2 ϭ h͒:\n͗z ˆ͉ c 1 , c 2 ͘ ϭ 1 2h Ϫ1 ϩ g rp Ϫ1ͫ g rp Ϫ1 ϩ h Ϫ1 h Ϫ1 h Ϫ1 g rp Ϫ1 ϩ h Ϫ1 ͬͫ 1 2 ͬ (44) Cov(z ˆ͉ c 1 , c 2 ) ϭ ␤ 2 2͑2h Ϫ1 ϩ g rp Ϫ1 ͒ ϫ ͫ ͑ g rp Ϫ1 ϩ h Ϫ1 ͒h Ϫ1 h Ϫ2 h Ϫ2 ͑ g rp Ϫ1 ϩ h Ϫ1 ͒h Ϫ1 ͬ (45)\nIt is straightforward to verify that information integration in the two coupled networks of the decentralized system (Eq. 42-45) satisfy exactly the prediction of the Bayesian observer (Eqs., 38 and 39); that is:\nV͑ z ˆl ͉ c 1 , c 2 ͒ Ϫ1 ϭ V͑z ˆl ͉ c 1 ͒ Ϫ1 ϩ V͑z ˆl ͉ c 2 ͒ Ϫ1 (46) ͗z ˆl ͉ c 1 , c 2 ͘ V͑ z ˆl ͉ c 1 ,c 2 ͒ ϭ ͗z ˆl ͉ c 1 ͘ V͑ z ˆl ͉ c 1 ͒ ϩ ͗z ˆl ͉ c 2 ͘ V͑ z ˆl ͉ c 2 ͒ , l ϭ 1, or 2 (47)\nTherefore, network l is an optimal estimator for stimulus l. Interestingly, by comparing estimation results of the decentralized system (Eq. 44 -45) and the Bayesian observer (Eq. 40 -41) with 1 ϭ 2 , we see that the reciprocal connections between the two networks encode the combination prior and thus determine the extent of integration; that is:\ng rp Ϫ1 ϰ cp 2 (48)\nSimilarly, the effective input strength represents the reliability of input cue:\nh Ϫ1 ϰ 2 (49)\nNotably, when full Bayesian integration is considered, it requires cp ϭ 0, so g rp ϭ ϱ; that is, the reciprocal connection strength is infinitely strong. In such a case, the two networks effectively collapse into a single network and the system becomes equivalent to a system having only a single dedicated integration area as proposed previously (Ma et al., 2006).\nAlthough the information integration is optimal for the special case used in the theoretical analysis above, the so far approximated nonlinear dependence of the effective strengths g rp , h, and ␤ on network and input variables may nevertheless cause the integration in the full model to deviate from the Bayesian observer. Therefore, to determine whether optimal integration still holds without approximations and if the theoretic result generalizes to a wider parameter regime, we next performed numerical simulations.\nIn the simulations, for each network, the Bayesian prediction under the combined cue condition was calculated by substituting the estimates under single-cue conditions into Equations 46 and 47. This approach is similar to experimental studies in which the estimations of MSTd (VIP) neurons in the combined cue condition are predicted by using the responses of MSTd (VIP) neurons under single-cue conditions (Gu et al., 2008;Chen et al., 2013). Figure 4A shows an example of the joint estimates of both networks under all three stimulus conditions. When only cue 1 was present, the estimates of both networks were centered at 1 and network 1 had smaller estimation variance than network 2 because network 2 received the input indirectly via network 1. This result is in accordance with the prediction of the Bayesian observer:  (B-E) J rc ϭ 0.5J c , J rp ʦ 0.5J rc ; (F ) J rc ϭ ͓0.4, 0.6͔J c , J rp ʦ ͓0.2, 0.9͔J rc .\nV͑s ˆ2 ͉ c 1 ͒ ϭ 1 2 ϩ cp 2 is larger than V͑s ˆ1 ͉ c 1 ͒ ϭ 1 2 (set\n2 to ϱ in Eq. 41). The estimates of both networks were reversed when only cue 2 was presented. In the combined cue condition, the estimates of the two networks shifted toward a position in between 1 and 2 and had the smallest variance. Note that the means of the estimates of the two networks were different in the combined cue condition when the two cues were disparate, as required by the Bayesian observer (Eq. 40).\nTo determine whether the network estimation changed with cue reliability (represented by the height of the input bump), we varied the reliability of one cue while fixing the other cue as well as other network parameters (Fig. 4B). With increasing reliability of cue 1, the estimation variance of network 1 decreased (blue line in Fig. 4B top), implying that the reliability of network 1's response increased accordingly and, therefore, the weight of cue 1 in network 1 increased as well (blue line in Fig. 4B bottom). Analogous results were observed when changing the reliability of cue 2 while fixing the other parameters (orange lines in Fig. 4B).\nFurthermore, we also investigated how the strength of the reciprocal connections J rp between two networks influenced the network estimations (Fig. 4C). Increasing J rp induced a decrease of the estimation variance and a decrease of the weight of the direct cue (the direct cue to network l is cue l ) of both networks, meaning that the estimations of the two networks became closer to each other, which implies that the two cues were integrated to a larger extent (Eq. 40 and 41). This result agrees with Equation 48; that is, that the reciprocal connection strength is inversely proportional to the variance of the combination prior cp 2 . Next, we tested the network performance under different combinations of cue intensities (see Materials and Methods for the details of the parameter settings). The cue intensities span a large interval ranging from superadditive to near-saturation regions of the neural responses. Figure 4, D and E, plots the estimation means and variances of both networks versus Bayesian predictions. Indeed, the simulation results show that each network individually achieved near optimal inference for the underlying stimulus under a wide range of parameter values (R 2 ϭ 0.979 and 0.972 for the mean and variance, respectively).\nWe further systematically changed the network and input parameters and measured the deviations of the integration weight for the direct cue ⌬w dirϪcue (Eq. 28) and the deviation of estimation variance ⌬Var (Eq. 29) from the Bayesian prediction (Fig. 4F ). The varied parameters include reciprocal connection strengths, recurrent connection strengths, and input strengths of the two cues (see Materials and Methods for details). Expectedly, because of some nonlinear effects of the network dynamics, the integration performance deviated from Bayesian predictions for extreme parameter settings. However, in our testing parameter region, the deviations of the integration weight of the direct cue were all bounded in the region of Ϯ0.2, and the deviations of the variance were bounded in the region of Ϯ0.32, indicating nevertheless near optimality. Interestingly, in our system, the deviations of the weights were positively correlated with deviations of the variance, in agreement with experiments in which similar deviations from optimal behavior were observed (Fetsch et al., 2009).",
+            "n_publication_ref": 4,
+            "n_figure_ref": 9
+        },
+        {
+            "heading": "Optimal information integration at the single-neuron level",
+            "text": "Limited by the available data, electrophysiological experiments for studying cue-integration focused only on single neuron activities rather than population responses (Gu et al., 2008;Chen et al., 2013). In a heading direction discrimination task, it was found that the optimal integration of visual and vestibular inputs could be read out in single neurons' activities (Gu et al., 2008;Chen et al., 2013). To test whether similar optimal integration behaviors are achieved on a single-neuron level in our model, we mimicked the experimental setup and simulated a discrimination task in which the heading direction is judged as being above or below 0°based on the single neuron's activities. We investigated whether the actual discrimination performance of an example neuron during combined cues can be predicted from the singlecue conditions when using Bayesian inference (Fig. 5; see Eq. 30). Figure 5D shows the neuronal discrimination thresholds of an example neuron across trials. The threshold in the combined cue condition was significantly smaller than the threshold in cue 1 (p ϭ 1.22 ϫ 10 Ϫ40 , n ϭ 50, unpaired t test) and cue 2 conditions (p ϭ 8.64 ϫ 10 Ϫ44 , n ϭ 50, unpaired t test), indicating that the integration of two cues happened. Although the combined threshold was significantly greater than the predicted value (p ϭ 0.044, n ϭ 50, unpaired t test), the combined threshold was only 2% greater than the predicted one, indicating near optimal integration. This result shows that our model reproduces the experimental finding on the integration behavior of single neurons.",
+            "n_publication_ref": 4,
+            "n_figure_ref": 2
+        },
+        {
+            "heading": "Empirical principles of multisensory integration",
+            "text": "We found that our decentralized system can also reproduce some characteristic properties of neuronal responses observed during multisensory integration, including the inverse effectiveness, the spatial principle, and the reliability-based combination (Fetsch et al., 2013).\nInverse effectiveness states that the amplification effect of combined cues compared with single-cue conditions is weakened for strong input (Stein and Stanford, 2008). Figure 6A (left) displays the responses of an example neuron in three stimulus conditions with varying cue intensities (see details in Materials and Methods). With increasing cue intensities, the combined neuronal response increases, but the amplification effect of combined responses compared with the sum of single-cue responses becomes smaller, indicating that the inverse effectiveness is achieved. For weak intensity, the neuronal response to combined cues was larger than the sum of its responses to two individual cues, exhibiting a superadditive tendency, whereas, for strong inputs, the combined neuronal response was smaller than the sum of the single-cue responses, exhibiting a subadditive tendency.\nThis amplification of the response during combined cues is known to be modulated by the amount of disparity between two cues. This effect is called the spatial principle (Fetsch et al., 2013). Our system could reproduce this effect. When two cues were congruent, the combined neuronal response was larger than its response to either of the cues, exhibiting cross-modal enhancement (Fig. 6A,left). When the disparity of two cues was large enough, the response of the neuron became weaker than its response to the more reliable cue, exhibiting cross-modal suppression (Fig. 6A,right). This property originates from the divisive normalization in the network dynamics, as pointed out by (Ohshiro et al., 2011): when the disparity of two cues is large, cue 2 excites the example neuron weakly but still contributes effectively to the inhibitory neuron pool, which in turn more strongly suppresses the example neuron compared with the inhibition in the single-cue condition.\nFinally, responses of single neurons to combined cues are reliability dependent. This effect is called reliability-based combination (Morgan et al., 2008) and could also be reproduced by our model system. Figure 6B shows the bimodal tuning curves of an example neuron in network 1 with varied cue 1 intensities while with other parameters were fixed. With a large intensity value of cue (left panel in Fig. 6B), the bimodal response of the example neuron was dominated by cue 1, meaning that the firing rate of the example neuron was affected more significantly by changing cue 1 than changing cue 2. With declining intensity of cue 1, the bimodal tuning curve of the neuron became gradually dominated by cue 2. By fitting the bimodal turning curve as a linear combination of the unimodal tuning curves of the same neuron (Eq. 31), R 2 is 0.96, 0.90, and 0.93 for decreasing intensity of cue 1 ␣ 1 ), we found that when the reliability of cue 1 increased, the weight of cue 1 also increased; whereas the weight of cue 2 decreased.\nIn summary, single-neuron activities of our model system were in good agreement with a number of empirical multisensory integration principles.",
+            "n_publication_ref": 5,
+            "n_figure_ref": 7
+        },
+        {
+            "heading": "Information integration of multiple cues",
+            "text": "In reality, the brain often needs to integrate information from more than just two sensory cues (Wozny et al., 2008). A decentralized integration system is very flexible due to its modular structure and thus can be easily extended to an arbitrary number of coupled network modules with each of them receiving and processing an individual cue. For example, to integrate three cues, a third network, which receives cue 3, can be added directly to the aforementioned system (Fig. 7A). Furthermore, in the general case of integration of N cues, a decentralized system can be further extended to comprise N modules that are reciprocally connected in an all-to-all fashion and each module receives feedforward inputs from its corresponding cue. The means and variances of network estimations under all cueing conditions are derived in the Materials and Methods section (Eq. 18 -21). For simplicity, we assumed that all networks and inputs have the same parameters. The results indicate that the distribution of the estimates of network l satisfies the following:\np͑ z ˆl ͉ c l ,ഫ i l c i ͒ϰp͑z ˆl ͉ c l ͒p͑z ˆl ͉ ഫ i l c i ͒(50)\nThe above equation means that the distribution of the estimates of network l can be factorized as the products of the distribution under cue l condition (direct cue of network l ) and the one under condition of all cues combined except cue l, p͑z ˆl ͉ ഫ i l c i ͒. However, the latter distribution cannot be further factorized so that it is in general not proportional to Β i l p͑z ˆl ͉ c i ͒. This is because network l receives the information of other cues only indirectly from other networks and the reciprocal connections induce correlation between the indirect cues. Does this incapability of factorization imply that the integration of indirect cues is suboptimal in the decentralized system? This will depend on the Bayesian observer used for the comparison. From the analysis above, we know that the reciprocal connection between network 1 and 2 represents the combination prior p͑s 1 , s 2 ͒ of the Bayesian observer. Because networks are only connected in a pairwise manner, prior information beyond the pairwise interaction seems impossible to represent in the network. Indeed, we found that when the combination prior of the extended Bayesian observer has the product of Gaussian form (see Eq. 24) as follows:\np͑s 1 , s 2 , …, s N ͒ ϭ 1 Z i j p ˜͑s i , s j ͒ ϭ 1 Z exp ͫ Ϫ i j ͑s i Ϫ s j ͒ 2 2͑ͱN/ 2 cp ͒ 2 ͬ , i, j ʦ ͓1, N͔(51)\nwhere the integration of the decentralized system is still optimal, that is, network l is an opimal estimator for stimulus l through integrating its feedforward inputs from cue l and reciprocal inputs from other networks (see Eq. 18 -21 and 25-27 for the derivation and unshaded bars in Figure 7B). Analogous to the system consisting of only two networks, each component of p ˜͑s i , s j ͒ in Equation 51 is represented by the reciprocal connection between network i and network j. The responses in this small stimulus range are used to perform ROC analysis to estimate the neurometric functions. C, Neurometric functions of the example neuron, which denotes the correct fraction of judging the stimulus to be larger than 0°. Smooth lines show the cumulative Gaussian fit of the neurometric functions. D, Average neuronal discrimination thresholds of the example neuron in three stimulus conditions compared with the Bayesian prediction (Eq. 30). The actual neuronal discrimination thresholds in the case of combined cues are comparable with the Bayesian prediction ( p ϭ 0.044, n ϭ 50, unpaired t test). Parameters: J rc ϭ 0.5J c , J rp ʦ 0.5J rc , ␣ 1 ϭ 0.4U m 0 , ␣ 2 ϭ 0.9U m 0 .",
+            "n_publication_ref": 1,
+            "n_figure_ref": 2
+        },
+        {
+            "heading": "Robustness against failure of modules",
+            "text": "A key advantage of the decentralized architecture is its robustness to damage in local networks. For our model, we found that, although some cues can become inaccessible (but this problem can be resolved by cross-cue connections shown as the dashed lines in Fig. 1D), the damage of one or a few network modules does not impair the optimality of two cue integration in still intact networks, meaning that the network estimations under combined cue condition can be also predicted by using Equations 38 and 39. For example, in a system that consists of three networks receiving three cues, network 1 and 2 optimally integrated cues 1 and 2 regardless of whether network 3 was damaged; that is, p͑ z ˆl ͉ c 1 , c 2 ͒ϰp͑ z ˆl ͉ c 1 ͒p͑z ˆl ͉ c 2 ͒, l ϭ 1, 2 (Fig. 7B; p ϭ 0.40 and 0.27 when comparing the network variance with the prediction with or without blocking network 3, respectively; n ϭ 100, unpaired t test). However, the neural activity of the intact networks nevertheless changed in response to the damage. For example, a loss of network 3 caused the variance of the estimates in networks 1 and 2 to increase even though cue 3 was absent (Fig. 7B and Eq. 18 -21 in Materials and Methods). This change can be understood from two perspectives. From the perspective of network dynamics, the existing connections between networks help to average out noise (Zhang and Wu, 2012;Kilpatrick, 2013). Therefore, the more excitatory connections a network module receives, the smaller the variance of its estimate, so losing a connection due to damage consequently increases the variance. Conversely, from the perspective of the Bayesian observer, the loss of network 3 changes the effective prior for the integration of cue 1 and 2, from p 3 ͑s 1 , s 2 ͒ ϭ ͵ p͑s 1 , s 2 , s 3 ͒ds 3 to p ˜͑s 1 , s 2 ͒. From Equation 24 Information integration in a decentralized system with multiple reciprocally connected networks. A, Architecture of a system consisting of three reciprocally connected networks. The insertion of a third network is done simply by reciprocally connecting network 3 with other networks. B, Robust information integration in three reciprocally connected networks. After blocking network 3 (shaded bars), network 1's estimate in the combined condition is nevertheless still similar to the Bayesian estimate (no significant difference: p ϭ 0.27, n ϭ 80, unpaired t test), although its variance increases. Error bars plot SD of the network estimation variance obtained from 100 trials. Parameters are the same as Figure 5.\ncase of N ϭ 3), we see that the variance of the integration prior increases from cp 2 to 3 cp 2 /2, thus increasing the variance of the estimation (Eq. 41). This property might explain the recent experimental finding that, whereas the integration of visual and vestibular cues can still satisfy the Bayesian prediction (Eq. 38) after blocking MSTd, the overall behavioral accuracy nevertheless decreased (Gu et al., 2012).",
+            "n_publication_ref": 3,
+            "n_figure_ref": 4
+        },
+        {
+            "heading": "Discussion",
+            "text": "In the present study, we have explored how several brain areas could work together to integrate information optimally in a decentralized manner. Decentralized computing has been favored by engineering applications due to its robustness, computational efficiency, and modularity (Durrant-Whyte and Henderson, 2008). Similar concepts, such as parallel and distributed processing, have been long proposed as the basis of brain functions (Rumelhart et al., 1988) and the idea of decentralized integration was discussed previously (Sabes, 2011). However, how decentralized information integration might be achieved in neural circuitry is not known. Here, we have shown that interconnected network modules can build up a decentralized information integration system in a biologically plausible manner. Most importantly, the resulting system is capable of integrating information from different cues and estimating multiple stimuli in a near-optimal way.",
+            "n_publication_ref": 3,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "Comparison with previous approaches",
+            "text": "In contrast to a decentralized system, a centralized architecture is similar to the hypothesis of having one dedicated multisensory area that pools incoming sensory information as assumed by a number of modeling studies on multisensory integration (Ma et al., 2006;Alvarado et al., 2008;Magosso et al., 2008;Ursino et al., 2009;Ohshiro et al., 2011). In regard to the anatomy, the finding of many interconnected multisensory areas favors the decentralized system. Taking visual-vestibular integration system as an example, not one single area, but instead many areas, including MSTd (Gu et al., 2008), VIP (Chen et al., 2013), the frontal eye field (Gu et al., 2015), and visual posterior sylvian area (Chen et al., 2011b), display integrative responses to combined visual and vestibular inputs. Apart from feedforward connections from unisensory areas, abundant reciprocal connections exist between multisensory areas (Boussaoud et al., 1990;Baizer et al., 1991). Ma et al., 2006 found that a single dedicated network could implement a Bayesian observer with full integration as follows:\np͑s ͉ c 1 , c 2 , …, c N ͒ϰ lϭ1 N p͑c l ͉ s͒ (52)\nwhere two or multiple cues are fully integrated into an unified percept. In contrast, the decentralized architecture implements a Bayesian observer of the form:\np͑s 1 , s 2 , …, s N ͉ ഫ l c l ͒ϰ ͫl p͑c l ͉ s͒ ͬ p͑s 1 , s 2 , …, s N ͒ (53)\nwhich estimates the values of multiple stimuli simultaneously, integrating information from other cues to an extent that is regulated by the form of the combination prior. Whether one or the other Bayesian observer is more plausible for describing the information integration in neural systems likely depends on many aspects, such as the nature of the features to be integrated, the neural sites, and sensory modalities in questions. Human psychophysical studies suggest that, depending on cueing conditions, the brain may use different strategies to integrate multisensory information, from full to partial and to no integration at all (Hillis et al., 2002;Shams et al., 2005;Ernst, 2006). Therefore, both Bayesian observers might be offer a valid description in certain situations.",
+            "n_publication_ref": 15,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "Reciprocal connections in the decentralized system",
+            "text": "We found that the combination prior p͑s 1 , s 2 , …, s N ͒ of the observer is encoded by the reciprocal connections between networks: the variance of the combination prior, cp 2 , which measures the similarity between stimuli and thus determines the extent of integration, is represented by the inverse of the effective reciprocal connection strength between networks, g rp Ϫ1 . Therefore, the decentralized system gives a new explanation for the abundance of reciprocal connections between the many existent multisensory areas.\nFrom Equations 40 and 41, we see that the conventionally used criteria for Bayesian integration are always satisfied regardless of the value of cp 2 . This raises the question of how the strength of reciprocal connections should be determined for information integration. Because the strength of the reciprocal connection regulates the integration extent in the network, it should be adjusted to match the real distribution of stimuli in the natural environment, such that the estimates of the networks are closest statistically to the true stimulus values (Ko ¨rding and Wolpert, 2004;Ko ¨rding et al., 2007).\nMoreover, in a naturally dynamical environment, the underlying relation between two presented cues might vary over time, implying that the extent of integration, cp, need to be adjusted accordingly. The decentralized system provides a promising framework to achieve this adaptability by dynamically learning or transiently modulating the effective reciprocal strength between two networks.\nReciprocal connections were also considered previously in a modeling study on coordinate transformation (Dene `ve et al., 2001;Pouget et al., 2002;Avillac et al., 2005). However, the com-",
+            "n_publication_ref": 5,
+            "n_figure_ref": 0
+        },
+        {
+            "heading": "A B",
+            "text": "Figure 8. A, Deviation of network variance with additivity index. The additivity index is the ratio of the peak firing rate (bump height) under combined cue condition and the sum of the two peak firing rates under both single-cue conditions. The parameters are the same as in Figure 4F. B, M-shaped covariance structure between two neurons in decentralized system, which is a symbol of CANN. 1 and 2 are the preferred direction of the two neurons. When the stimulus is in between the preferred directions, the two neurons display negative correlation; otherwise, their activities are positively correlated.\nputations involved in coordinate transformation and multisensory integration are fundamentally different (Beck et al., 2011) and thus are not comparable to the reciprocally connected networks within the framework of decentralized information integration.",
+            "n_publication_ref": 1,
+            "n_figure_ref": 2
+        },
+        {
+            "heading": "Plausibility and predictions of the model",
+            "text": "In our framework, each network module is modeled as a CANN.\nCANNs have many interesting computational properties and are thus widely used to explain many cortical functions, including the population decoding of orientation (Ben-Yishai et al., 1995), spatial location (Samsonovich and McNaughton, 1997), and working memory (Compte et al., 2000). Moreover, it has been shown that a single CANN can optimally compute one sensory quantity (Dene `ve et al., 1999;Wu et al., 2002). The recurrent connections within a CANN serve as the basis for estimating a sensory quantity from noisy inputs, whereas divisive normalization was shown to provide realistic nonlinear neural responses (Carandini et al., 1997;Ohshiro et al., 2011). Interestingly, optimal integration in a decentralized system with CANNs requires subadditivity of neuronal responses (Fig. 8A), which is in agreement with the finding of subadditive neuronal responses in multisensory areas (Morgan et al., 2008;Fetsch et al., 2013). The subadditivity in case of optimal integration in the decentralized network originates from the property that reliability increases superlinearly with bump height (Fig. 2F ).\nOne way to test experimentally whether sensory areas might indeed be implemented by CANNs is to look for any M-shaped correlation structure between neighboring neurons' activities (Fig. 8B), a hallmark of the translation-invariant connectivity (Ben-Yishai et al., 1995;Wu et al., 2008). Recent experimental data indeed suggests an M-shaped correlation between neurons in MT (Ponce-Alvarez et al., 2013) and in the prefrontal cortex (Wimmer et al., 2014), which supports the idea that CANNs provide biologically plausible computational modules for a decentralized information integration architecture. A recent study pointed out that the M-shaped correlation limits the information capacity of a neural ensemble (Moreno-Bote et al., 2014). Certain information loss in CANNs is indeed inevitable because of their neutrally stable dynamics, which is a key property leading to many computational advantages. This neutral stability implies that noise components along the direction of bump position shift cannot be effectively averaged out, leading to potential information loss (these fluctuations can only be average out over time, not space; Wu et al., 2008). Nevertheless, for general independent noises, the information loss caused by the noise component along the direction of bump position shift is rather small, suggesting that using CANNs is still an efficient way to extract stimulus information in practice (Dene `ve et al., 1999).\nIn a decentralized system, neurons in different areas are reciprocally connected, so activities of connected areas should be correlated. This prediction is supported by fMRI and EEG studies (Vincent et al., 2007;Senkowski et al., 2008). Note, however, that our framework is not restricted to model information integration across brain areas but may also be readily applied to information integration between layers or between hypercolumns within a single brain area. For instance, in the superior colliculus, where visual and auditory information are integrated (Stein and Stanford, 2008), the decentralized idea may be also applicable. Anatomically, the superficial layers of the superior colliculus receive solely visual inputs, whereas the deep layers receive solely auditory inputs. As long as the superficial and deep layers are reciprocally connected, it is possible that they constitute a decentralized integration system.\nFor simplicity, we ignored cross-cue connections between modules (dashed lines in Fig. 1D). Experiments found that the MSTd neurons have relatively shorter latency than VIP neurons in response to visual inputs (Gabel et al., 2002), whereas VIP neurons respond relatively faster than MSTd neurons to vestibular inputs (Chen et al., 2011a). This observation indicates that direct-and cross-feedforward connections function differently (otherwise, their response latencies would be comparable) and that, as an approximation, the contribution from the crossfeedforward connections can be regarded as included in the reciprocal connections (because they are both slower than the direct-feedforward connections and convey the same cross-cue information). Nevertheless, the cross-feedforward connections could be important in other aspects of information integration; for example, they could ensure that all cues remain accessible in case of a network module failure.\nWhether MSTd and VIP and other reciprocally connected cortical areas in posterior parietal cortex constitute a decentralized system could be tested with electrophysiological experiments. According to the estimations of decentralized system (Eq. 44 and 45), when visual (vestibular) cue is presented, the discrimination thresholds of MSTd neurons should be smaller (larger) than that of VIP neurons. Another prediction is that if partial integration happens (which can only be implemented by a decentralized system), the estimation means from MSTd and VIP neurons are different when two cues are disparate (Eq. 44). This can be verified by comparing the weights of the visual cue estimated from MSTd neurons and VIP neurons.",
+            "n_publication_ref": 21,
+            "n_figure_ref": 4
+        }
+    ],
+    "references": [
+        {
+            "title": "The ventriloquist effect results from near-optimal bimodal integration",
+            "journal": "Curr Biol",
+            "year": "2004",
+            "authors": "D Alais; D Burr"
+        },
+        {
+            "title": "A neural network model of multisensory integration also accounts for unisensory integration in superior colliculus",
+            "journal": "Brain Res",
+            "year": "2008",
+            "authors": "J C Alvarado; B A Rowland; T R Stanford; B E Stein"
+        },
+        {
+            "title": "Reference frames for representing visual and tactile locations in parietal cortex",
+            "journal": "Nat Neurosci",
+            "year": "2005",
+            "authors": "M Avillac; S Dene `ve; E Olivier; A Pouget; J R Duhamel"
+        },
+        {
+            "title": "Organization of visual inputs to the inferior temporal and posterior parietal cortex in macaques",
+            "journal": "J Neurosci",
+            "year": "1991",
+            "authors": "J S Baizer; L G Ungerleider; R Desimone"
+        },
+        {
+            "title": "Marginalization in neural circuits with divisive normalization",
+            "journal": "J Neurosci",
+            "year": "2011",
+            "authors": "J M Beck; P E Latham; A Pouget"
+        },
+        {
+            "title": "Theory of orientation tuning in visual cortex",
+            "journal": "Proc Natl Acad Sci U S A",
+            "year": "1995",
+            "authors": "R Ben-Yishai; R L Bar-Or; H Sompolinsky"
+        },
+        {
+            "title": "Visuo-vestibular interaction in the reconstruction of travelled trajectories",
+            "journal": "Exp Brain Res",
+            "year": "2004",
+            "authors": "R J Bertin; A Berthoz"
+        },
+        {
+            "title": "Pathways for motion analysis: cortical connections of the medial superior temporal and fundus of the superior temporal visual areas in the macaque",
+            "journal": "J Comp Neurol",
+            "year": "1990",
+            "authors": "D Boussaoud; L G Ungerleider; R Desimone"
+        },
+        {
+            "title": "Vision and touch are automatically integrated for the perception of sequences of events",
+            "journal": "Medline",
+            "year": "2006",
+            "authors": "J P Bresciani; F Dammeier; Ernst Mo"
+        },
+        {
+            "title": "The analysis of visual motion: a comparison of neuronal and psychophysical performance",
+            "journal": "J Neurosci",
+            "year": "1992",
+            "authors": "K H Britten; M N Shadlen; W T Newsome; J A Movshon"
+        },
+        {
+            "title": "Linearity and normalization in simple cells of the macaque primary visual cortex",
+            "journal": "J Neurosci",
+            "year": "1997",
+            "authors": "M Carandini; D J Heeger; J A Movshon"
+        },
+        {
+            "title": "A comparison of vestibular spatiotemporal tuning in macaque parietoinsular vestibular cortex, ventral intraparietal area, and medial superior temporal area",
+            "journal": "J Neurosci",
+            "year": "2011",
+            "authors": "A Chen; G C Deangelis; D E Angelaki"
+        },
+        {
+            "title": "Convergence of vestibular and visual self-motion signals in an area of the posterior sylvian fissure",
+            "journal": "J Neurosci",
+            "year": "2011",
+            "authors": "A Chen; G C Deangelis; D E Angelaki"
+        },
+        {
+            "title": "Functional specializations of the ventral intraparietal area for multisensory heading discrimination",
+            "journal": "J Neurosci",
+            "year": "2013",
+            "authors": "A Chen; G C Deangelis; D E Angelaki"
+        },
+        {
+            "title": "Data fusion for sensory information processing systems",
+            "journal": "Springer Science and Business Media",
+            "year": "2013",
+            "authors": "J J Clark; A L Yuille"
+        },
+        {
+            "title": "Synaptic mechanisms and network dynamics underlying spatial working memory in a cortical network model",
+            "journal": "Cereb Cortex",
+            "year": "2000",
+            "authors": "A Compte; N Brunel; P S Goldman-Rakic; X J Wang"
+        },
+        {
+            "title": "Theoretical neuroscience",
+            "journal": "MIT",
+            "year": "2001",
+            "authors": "P Dayan; L F Abbott"
+        },
+        {
+            "title": "Bayesian multisensory integration and crossmodal spatial links",
+            "journal": "J Physiol",
+            "year": "2004",
+            "authors": "S Dene `ve; A Pouget"
+        },
+        {
+            "title": "Reading population codes: a neural implementation of ideal observers",
+            "journal": "Nat Neurosci",
+            "year": "1999",
+            "authors": "S Dene `ve; P E Latham; A Pouget"
+        },
+        {
+            "title": "Efficient computation and cue integration with noisy population codes",
+            "journal": "Nat Neurosci",
+            "year": "2001",
+            "authors": "S Dene `ve; P E Latham; A Pouget"
+        },
+        {
+            "title": "Multisensor data fusion",
+            "journal": "Springer",
+            "year": "2008",
+            "authors": "H Durrant-Whyte; T C Henderson"
+        },
+        {
+            "title": "A Bayesian view on multimodal cue integration",
+            "journal": "Oxford University",
+            "year": "2005",
+            "authors": "M O Ernst"
+        },
+        {
+            "title": "Humans integrate visual and haptic information in a statistically optimal fashion",
+            "journal": "Nature",
+            "year": "2002",
+            "authors": "M O Ernst; M S Banks"
+        },
+        {
+            "title": "Dynamic reweighting of visual and vestibular cues during self-motion perception",
+            "journal": "J Neurosci",
+            "year": "2009",
+            "authors": "C R Fetsch; A H Turner; G C Deangelis; D E Angelaki"
+        },
+        {
+            "title": "Bridging the gap between theories of sensory cue integration and the physiology of multisensory neurons",
+            "journal": "Nat reviews Neuroscience",
+            "year": "2013",
+            "authors": "C R Fetsch; G C Deangelis; D E Angelaki"
+        },
+        {
+            "title": "A moving bump in a continuous manifold: a comprehensive study of the tracking dynamics of continuous attractor neural networks",
+            "journal": "Neural Comput",
+            "year": "2010",
+            "authors": "C C Fung; K Y Wong; S Wu"
+        },
+        {
+            "title": "Temporal properties of optic flow responses in the ventral intraparietal area",
+            "journal": "Vis Neurosci",
+            "year": "2002",
+            "authors": "S F Gabel; H Misslisch; S J Schaafsma; J Duysens"
+        },
+        {
+            "title": "Neural correlates of multisensory cue integration in macaque MSTd",
+            "journal": "Nat Neurosci",
+            "year": "2008",
+            "authors": "Y Gu; D E Angelaki; G C Deangelis"
+        },
+        {
+            "title": "Causal links between dorsal medial superior temporal area neurons and multisensory heading perception",
+            "journal": "J Neurosci",
+            "year": "2012",
+            "authors": "Y Gu; G C Deangelis; D E Angelaki"
+        },
+        {
+            "title": "Multisensory convergence of visual and vestibular heading cues in the pursuit area of the frontal eye field",
+            "journal": "Cereb Cortex",
+            "year": "2015",
+            "authors": "Y Gu; Z Cheng; L Yang; G C Deangelis; D E Angelaki"
+        },
+        {
+            "title": "Combining sensory information: mandatory fusion within, but not between, senses",
+            "journal": "Science",
+            "year": "2002",
+            "authors": "J M Hillis; M O Ernst; M S Banks; M S Landy"
+        },
+        {
+            "title": "Optimal integration of texture and motion cues to depth",
+            "journal": "Vision Res",
+            "year": "1999",
+            "authors": "R A Jacobs"
+        },
+        {
+            "title": "Interareal coupling reduces encoding variability in multi-area models of spatial working memory",
+            "journal": "Front Comput Neurosci",
+            "year": "2013",
+            "authors": "Z P Kilpatrick"
+        },
+        {
+            "title": "The loss function of sensorimotor learning",
+            "journal": "Proc Natl Acad Sci U S A",
+            "year": "2004",
+            "authors": "K P Ko ¨rding; D M Wolpert"
+        },
+        {
+            "title": "Causal inference in multisensory perception",
+            "journal": "PLoS One",
+            "year": "2007",
+            "authors": "K P Ko ¨rding; U Beierholm; W J Ma; S Quartz; J B Tenenbaum; L Shams"
+        },
+        {
+            "title": "Corticocortical connections of visual, sensorimotor, and multimodal processing areas in the parietal lobe of the macaque monkey",
+            "journal": "J Comp Neurol",
+            "year": "2000",
+            "authors": "J W Lewis; D C Van Essen"
+        },
+        {
+            "title": "Bayesian inference with probabilistic population codes",
+            "journal": "Nat Neurosci",
+            "year": "2006",
+            "authors": "W J Ma; J M Beck; P E Latham; A Pouget"
+        },
+        {
+            "title": "A the-oretical study of multisensory integration in the superior colliculus by a neural network model",
+            "journal": "Neural Netw",
+            "year": "2008",
+            "authors": "E Magosso; C Cuppini; A Serino; Di Pellegrino; G Ursino; M "
+        },
+        {
+            "title": "Information-limiting correlations",
+            "journal": "Nat Neurosci",
+            "year": "2014",
+            "authors": "R Moreno-Bote; J Beck; I Kanitscheider; X Pitkow; P Latham; A Pouget"
+        },
+        {
+            "title": "Multisensory integration in macaque visual cortex depends on cue reliability",
+            "journal": "Neuron",
+            "year": "2008",
+            "authors": "M L Morgan; G C Deangelis; D E Angelaki"
+        },
+        {
+            "title": "A normalization model of multisensory integration",
+            "journal": "Nat Neurosci",
+            "year": "2011",
+            "authors": "T Ohshiro; D E Angelaki; G C Deangelis"
+        },
+        {
+            "title": "Stimulus-dependent variability and noise correlations in cortical MT neurons",
+            "journal": "Proc Natl Acad Sci U S A",
+            "year": "2013",
+            "authors": "A Ponce-Alvarez; A Thiele; T D Albright; G R Stoner; G Deco"
+        },
+        {
+            "title": "A computational perspective on the neural basis of multisensory spatial representations",
+            "journal": "Nat Rev Neurosci",
+            "year": "2002",
+            "authors": "A Pouget; S Dene `ve; J R Duhamel"
+        },
+        {
+            "title": "Inference and computation with population codes",
+            "journal": "Annu Rev Neurosci",
+            "year": "2003",
+            "authors": "A Pouget; P Dayan; R S Zemel"
+        },
+        {
+            "title": "Resolving multisensory conflict: a strategy for balancing the costs and benefits of audio-visual integration",
+            "journal": "Proc Biol Sci",
+            "year": "2006",
+            "authors": "N W Roach; J Heron; P V Mcgraw"
+        },
+        {
+            "title": "Explorations in the Microstructure of Cognition",
+            "journal": "MIT",
+            "year": "1986",
+            "authors": "D E Rumelhart; J L Mcclelland; Research Pdp;  Group"
+        },
+        {
+            "title": "Sensory integration for reaching: models of optimality in the context of behavior and the underlying neural circuits",
+            "journal": "Prog Brain Res",
+            "year": "2011",
+            "authors": "P N Sabes"
+        },
+        {
+            "title": "Path integration and cognitive mapping in a continuous attractor neural network model",
+            "journal": "J Neurosci",
+            "year": "1997",
+            "authors": "A Samsonovich; B L Mcnaughton"
+        },
+        {
+            "title": "Bayesian inference explains perception of unity and ventriloquism aftereffect: identification of common sources of audiovisual stimuli",
+            "journal": "Neural Comput",
+            "year": "2007",
+            "authors": "Y Sato; T Toyoizumi; K Aihara"
+        },
+        {
+            "title": "Crossmodal binding through neural coherence: implications for multisensory processing",
+            "journal": "Trends Neurosci",
+            "year": "2008",
+            "authors": "D Senkowski; T R Schneider; J J Foxe; A K Engel"
+        },
+        {
+            "title": "Sound-induced flash illusion as an optimal percept",
+            "journal": "Neuroreport",
+            "year": "2005",
+            "authors": "L Shams; W J Ma; U Beierholm"
+        },
+        {
+            "title": "Multisensory integration: current issues from the perspective of the single neuron",
+            "journal": "Nat Rev Neurosci",
+            "year": "2008",
+            "authors": "B E Stein; T R Stanford"
+        },
+        {
+            "title": "Consciousness and complexity",
+            "journal": "Science",
+            "year": "1998",
+            "authors": "G Tononi; G M Edelman"
+        },
+        {
+            "title": "Multisensory integration in the superior colliculus: a neural network model",
+            "journal": "J Comput Neurosci",
+            "year": "2009",
+            "authors": "M Ursino; C Cuppini; E Magosso; A Serino; G Di Pellegrino"
+        },
+        {
+            "title": "Integration of proprioceptive and visual position-information: an experimentally supported model",
+            "journal": "J Neurophysiol",
+            "year": "1999",
+            "authors": "R J Van Beers; A C Sittig; J J Gon"
+        },
+        {
+            "title": "Intrinsic functional architecture in the anaesthetized monkey brain",
+            "journal": "Nature",
+            "year": "2007",
+            "authors": "J L Vincent; G H Patel; M D Fox; A Z Snyder; J T Baker; D C Van Essen; J M Zempel; L H Snyder; M Corbetta; M E Raichle"
+        },
+        {
+            "title": "Bump attractor dynamics in prefrontal cortex explains behavioral precision in spatial working memory",
+            "journal": "Nat Neurosci",
+            "year": "2014",
+            "authors": "K Wimmer; D Q Nykamp; C Constantinidis; A Compte"
+        },
+        {
+            "title": "Human trimodal perception follows optimal statistical inference",
+            "journal": "J Vis",
+            "year": "2008",
+            "authors": "D R Wozny; U R Beierholm; L Shams"
+        },
+        {
+            "title": "",
+            "journal": "Medline",
+            "year": "",
+            "authors": ""
+        },
+        {
+            "title": "Population coding and decoding in a neural field: a computational study",
+            "journal": "Neural Comput",
+            "year": "2002",
+            "authors": "S Wu; S Amari; H Nakahara"
+        },
+        {
+            "title": "Dynamics and computation of continuous attractors",
+            "journal": "Neural Comput",
+            "year": "2008",
+            "authors": "S Wu; K Hamaguchi; S Amari"
+        },
+        {
+            "title": "Representation of spatial orientation by the intrinsic dynamics of the head-direction cell ensemble: a theory",
+            "journal": "J Neurosci",
+            "year": "1996",
+            "authors": "K Zhang"
+        },
+        {
+            "title": "Neural information processing with feedback modulations",
+            "journal": "Neural Comput",
+            "year": "2012",
+            "authors": "W Zhang; S Wu"
+        }
+    ],
+    "figures": [
+        {
+            "figure_label": "",
+            "figure_type": "",
+            "figure_id": "fig_0",
+            "figure_caption": "Figure2. Decentralized neural network model for information integration. A, Decentralized information integration system consisting of two reciprocally connected networks, each receiving an independent cue. B, Detailed network structure of the decentralized system in A. Each network module is modeled as a CANN. Small circles represent neurons with preferred feature indicated by the arrow inside. An inhibitory neuron pool (the gray circle in the center) sums all activities of excitatory neurons and generates divisive normalization. The blue arrows indicate translation-invariant excitatory connections, with strength represented by color; red lines are inhibitory connections. Each network module receives an independent cue as feedforward input. C, Recurrent and reciprocal connections in the system are translation-invariant; that is, the connection strength between two neurons only depends on their distance in feature space. D, Activation function of network neurons. The saturation for large synaptic input stems from the divisive normalization by the inhibitory neuron pool in each network. E, Population activity is a family of bell-shaped bumps (dashed lines), the position of which is determined by the stimulus (solid lines). F, Peak firing rate (bump height) encodes the reliability of network estimation.",
+            "figure_data": ""
+        },
+        {
+            "figure_label": "",
+            "figure_type": "",
+            "figure_id": "fig_1",
+            "figure_caption": "Population responses and estimation results of network modules in the decentralized system. A, Illustration of the three stimulus conditions applied to the system. Cue 1 (blue) and cue 2 (orange) are first individually presented to network 1 and network 2, respectively, and then both cues are applied simultaneously (green) in the combined cue condition. B, Averaged population activities over trials of two coupled networks when presenting the stimulus conditions from A in temporal order. Both cues are congruent and static, and centered at 0°. The color encodes firing rate of the population activity. C, Snapshot of the population activity in network 1. The position of the activity bump is considered as the current estimate of the network (z ˆ1). D, Estimate of network 1 (from the population activity shown in B, computed as indicated in C) fluctuates with time. E, Mean (white line) and SD (colored region) of network 1's estimates averaged over 100 trials. Red dashed lines are theoretical calculations of the SD, which fit well with the simulation results.",
+            "figure_data": ""
+        },
+        {
+            "figure_label": "4",
+            "figure_type": "",
+            "figure_id": "fig_2",
+            "figure_caption": "Figure 4 .4Figure 4. Optimal information integration in two reciprocally connected networks. A, Example of joint estimations of two networks under three cueing conditions, with the marginal distributions plotted on the margin. B, Estimation variance and weight of cue 1 of network 1 when changing the intensity of either cue and fixing the intensity of another. Symbols: network results; lines: Bayesian prediction. C, Estimation variance and weight of direct cue (feedforward cue) of both networks with reciprocal connection strength. D, E, Comparisons of the mean (D) and variance (E) of the network estimate during the combined cue condition with the Bayesian prediction (Eq. 46 and 47) for different combinations of intensities for two cues (dots). Red star is an example parameter used in Figures 5, 6, and 7. F, Deviations of weight with deviations of variance of network's estimations. Red dots are deviations of network's estimations shown in D and E. Parameters: ␣ 1 , ␣ 2 ʦ ͓0.4, 1.5͔U m 0 , (B-E) J rc ϭ 0.5J c , J rp ʦ 0.5J rc ; (F ) J rc ϭ ͓0.4, 0.6͔J c , J rp ʦ ͓0.2, 0.9͔J rc .",
+            "figure_data": ""
+        },
+        {
+            "figure_label": "5",
+            "figure_type": "",
+            "figure_id": "fig_3",
+            "figure_caption": "Figure 5 .5Figure5. Single neurons integrate information optimally. A, Tuning curve of an example neuron in network 1 for the three stimulus conditions. The example neuron prefers Ϫ40°stimulus. Error bar indicates the SD of firing rate across trials. B, Responses of the example neuron in a narrow range of stimulus values for the three stimulus conditions. The responses in this small stimulus range are used to perform ROC analysis to estimate the neurometric functions. C, Neurometric functions of the example neuron, which denotes the correct fraction of judging the stimulus to be larger than 0°. Smooth lines show the cumulative Gaussian fit of the neurometric functions. D, Average neuronal discrimination thresholds of the example neuron in three stimulus conditions compared with the Bayesian prediction (Eq. 30). The actual neuronal discrimination thresholds in the case of combined cues are comparable with the Bayesian prediction ( p ϭ 0.044, n ϭ 50, unpaired t test). Parameters: J rc ϭ 0.5J c , J rp ʦ 0.5J rc , ␣ 1 ϭ 0.4U m 0 , ␣ 2 ϭ 0.9U m 0 .",
+            "figure_data": ""
+        },
+        {
+            "figure_label": "6",
+            "figure_type": "",
+            "figure_id": "fig_4",
+            "figure_caption": "Figure 6 .6Figure6. Empirical principles of multisensory integration for single neurons. A, Inverse effectiveness and spatial principle. Neuronal responses in the three stimulus conditions (cue 1 or 2 alone and cue 1 and cue 2 together) are plotted as a function of cue intensity, under different disparity between two cues. The differences of two cues are varied from 0 to 2a, where a is the turning width. B, Reliability-dependent combination. The bimodal tuning curves of a probe neuron with varied cue intensities are shown as a contour plot. The two marginal curves around each contour are the unimodal tuning curves. The intensity of cue 1, ␣ 1 , decreases gradually from left to right, whereas the intensity of cue 2, ␣ 2 , is fixed. C, Bimodal turning curve fitted as a linear model of the two unimodal turning curves (Eq. 31). The plot shows the weight of the two cues with respect to the relative intensity of cue 1. Parameters are the same as in Figure5.",
+            "figure_data": ""
+        },
+        {
+            "figure_label": "",
+            "figure_type": "table",
+            "figure_id": "tab_0",
+            "figure_caption": "Comparison of different information integration architectures. A, Centralized architecture. A central processor directly receives the raw observations from the sensors, and does all the computations to globally integrate information. B, Distributed architecture. Local processors first compute local estimates, which are subsequently integrated by a central processor to reach a global estimate. C, Decentralized architecture. No central element exists. Each processor first computes a local estimate and then propagates it to others. Information integration is done via cross talk among processors, so that each processor individually arrives at an optimally integrated estimate. D, Example of a decentralized information integration system in the cortex. MSTd and VIP are reciprocally connected with each other. Both areas can optimally integrate visual and vestibular information.",
+            "figure_data": "A Estimatez ˆz z Central processor B z ˆΙ1 C D Local 1 2 Central processor z ˆz ẑ1 z 2 1 2 z ˆz FigureprocessorLocal processorProcessorProcessorMSTdVIPCue (feedforwardΙ 1Ι2Ι 1Ι 2Ι 1Ι 2Ι 2input)Local sensorLocal sensorLocal sensorLocal sensorLocal sensorLocal sensorMTPIVCStimulus 1Stimulus 2Stimulus 1Stimulus 2Stimulus 1Stimulus 2Visual stimulusVestibular stimulus1."
+        }
+    ],
+    "formulas": [],
+    "doi": "10.1523/JNEUROSCI.0578-15.2016"
+}
