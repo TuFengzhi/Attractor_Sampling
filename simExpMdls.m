@@ -19,8 +19,11 @@ flagTask = 3;
 % 4. Scan parameters of Langevin sampling in a single CANN
 % 5. Demo of the 2D Langevin sampling in coupled CANNs
 % 6. Scan parameters of Langevin sampling in two coupled CANNs
-% 7. Scan parameters of Langevin sampling in multiple coupled CANNs
-% 8. Demo of Langevin sampling in a chaotic CANN
+% 7. Study how anti-symmetric coupling influence the sampling in two
+%    coupled CANNs
+% 8. Scan parameters of Langevin sampling in multiple coupled CANNs
+% 9. Demo of Langevin sampling in a chaotic CANN
+% 10. Tuning strength with coupling weight
 
 switch flagTask
     case 1
@@ -28,15 +31,21 @@ switch flagTask
     case 2
         demoLangevinSampling2D;
     case 3
-        demoCANNSampling;
+        cmprSamplingConvergeSpeed;
     case 4
-        scanCANNSampling;
+        demoCANNSampling;
     case 5
-        demoCoupledCANNSampling;
+        scanCANNSampling;
     case 6
-        scanCoupledCANNSampling;
+        demoCoupledCANNSampling;
     case 7
-        scanMultiCoupledCANNSampling;
+        scanCoupledCANNSampling;
     case 8
+        ansCoupledCANNs_AntiSymConns;
+    case 9
+        scanMultiCoupledCANNSampling;
+    case 10
         demoChaoticCANNSampling;
+    case 11
+        getTuneCuve_CoupledCANNs;
 end

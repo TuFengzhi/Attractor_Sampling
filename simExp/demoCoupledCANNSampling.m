@@ -103,13 +103,22 @@ yGrid = linspace(yLim(1), yLim(end), 1e2+1);
 pdfSample = mvnpdf([X(:), Y(:)], NetStat.meanBumpPos', NetStat.varBumpPos);
 pdfSample = reshape(pdfSample, size(X));
 % imagesc(hAxe(1), xGrid, yGrid, pdfSample')
-contour(X,Y, pdfSample)
-caxis([-5e-2, max(pdfSample(:))])
+contourf(X,Y, pdfSample)
+caxis([0, max(pdfSample(:))])
+axis xy
+
+% Use the colormap of the same color series
+addpath(fullfile(Path_RootDir, 'plotCode'));
+% cMap = getColorMapPosNegDat([0, max(pdfSample(:))], 64);
+% colormap(cMap);
+cMap = flipud(gray(64));
+colormap(cMap)
+caxis([-1e-2, max(pdfSample(:))])
 axis xy
 
 % Plot the distribution of posterior predicted by Bayes theorem
 SigmaS = inv(OmegaTheory);
-fPostBayes = @(x,y) ( ([x;y] - meanSampleTheory)' * OmegaTheory * ([x;y]-muS) - 9);
+fPostBayes = @(x,y) ( ([x;y] - meanSampleTheory)' * OmegaTheory * ([x;y]-meanSampleTheory) - 9);
 hEllipse = fimplicit(hAxe(1), fPostBayes, ...
     [SigmaS(1) + 5*SigmaS(1)*[-1, 1], meanSampleTheory(2) + 5*SigmaS(4)*[-1, 1]], ...
     'color', 'k', 'linestyle', '--', 'linew', 2);
